@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <%- include('./partials/head.ejs') %>
+
+    <body>
+
+        <%- include('./partials/nav.ejs') %>
+
+        <h2>Menu</h2>
+
+        <ul>
+            <% for ( let i = 0; i < items.length; i++ ) { %>
+                <li>
+                    <a href="/menu/<%= items[i].id %>">
+                        <%= items[i].name %>
+                    </a>
+                </li>
+            <% } %>
+        </ul>
+
+        <h2>Add item</h2>
+        <form action="/menu/" method="post">
+            <label for="name">Name</label>:
+            <input type="text" id="name" name="name" />
+            <br />
+            <label for="price">Price</label>:
+            <input type="number" step="any" id="price" name="price" />
+            <br />
+            <input type="submit" value="ADD" />
+        </form>
+
+    </body>
+
+</html>
