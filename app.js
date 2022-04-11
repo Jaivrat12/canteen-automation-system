@@ -20,7 +20,7 @@ app.use(express.urlencoded({            // parses urlencoded payloads like form 
 
 // setting up connection to database
 db.authenticate();
-db.sync().then(() => {
+db.sync({ alter: true }).then(() => {
 
     // listening for requests on a port
     const PORT = 3000;
