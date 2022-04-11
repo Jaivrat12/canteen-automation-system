@@ -33,4 +33,8 @@ app.get('/', (req, res) => {
     res.send('<a href="/menu">Go to Menu</a>');
 });
 
+app.get('/login', (req, res) => {
+    res.render('login');
+});
+
 app.use('/menu', menuRoutes);           // handle all menu routes
