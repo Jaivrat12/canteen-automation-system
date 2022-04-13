@@ -1,6 +1,7 @@
 // import modules
 const express = require('express');
 const db = require('./config/database.js');
+const loginRoutes = require('./routes/loginRoutes.js');
 const menuRoutes = require('./routes/menuRoutes.js');
 
 
@@ -37,4 +38,5 @@ app.get('/login', (req, res) => {
     res.render('login');
 });
 
+app.use(loginRoutes);
 app.use('/menu', menuRoutes);           // handle all menu routes
