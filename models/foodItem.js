@@ -1,37 +1,27 @@
-const Sequelize = require('sequelize');
+const { DataTypes } = require('sequelize');
+const myTypes = require('./myTypes.js');
 const db = require('../config/database.js');
 
 const FoodItem = db.define('food_item', {
-    id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    name: {
-        type: Sequelize.TEXT,
-        allowNull: false
-    },
+
+    id: myTypes.id,
+    name: myTypes.text(),
     price: {
-        type: Sequelize.DECIMAL(6, 2),
+        type: DataTypes.DECIMAL(6, 2),
         allowNull: false
     },
-    category: {
-        type: Sequelize.TEXT,
-        allowNull: false
-    },
+    category: myTypes.text(),
     isAvailable: {
-        type: Sequelize.BOOLEAN,
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
         allowNull: false
     },
-    image: {
-        type: Sequelize.TEXT
-    },
-    description: {
-        type: Sequelize.TEXT
-    },
-    prepTime: {
-        type: Sequelize.TIME
-    }
+    image: DataTypes.BLOB,
+    description: DataTypes.TEXT,
+    prepTime: DataTypes.TIME
+}, {
+    timestamps: false,
+    underscored: true
 });
 
 module.exports = FoodItem;
