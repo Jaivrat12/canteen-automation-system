@@ -1,8 +1,9 @@
 const express = require('express');
-const { loginPost } = require('../controllers/loginContoller');
+const { itemsGet, itemGet, itemPost } = require('../controllers/foodItemControllers.js');
 const router = express.Router();
 
-router.post('/login', loginPost )
+router.get('/', itemsGet);
+router.get('/:id', itemGet);
+router.post('/', itemPost);
 
 module.exports = router;
-//
