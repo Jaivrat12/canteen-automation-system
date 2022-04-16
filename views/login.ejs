@@ -13,6 +13,9 @@
 		<div class="container">
 			<form action="/login" method="POST">
 				<div class="title">Login</div>
+				<% if (error) { %>
+					Invalid Credential
+				<% } %>
 				<div class="input-box underline">
 					<input name="email" type="email" placeholder="Enter Your Email" required>
 					<div class="underline"></div>

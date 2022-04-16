@@ -1,5 +1,9 @@
 const Customer = require('../models/customer');
 
+async function loginGet(req, res) {
+    res.render('login', {error: false});
+}
+
 async function loginPost(req, res) {
 
     const email = req.body.email;
@@ -9,8 +13,11 @@ async function loginPost(req, res) {
     if (cus && cus.password == password) {
         res.redirect('/');
     } else {
-        res.redirect('/login');
+        res.render('login', {error: true});
     }
 }
 
-module.exports = { loginPost: loginPost };
+module.exports = { 
+    loginGet,
+    loginPost
+ };
