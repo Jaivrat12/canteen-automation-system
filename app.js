@@ -2,6 +2,7 @@
 const express = require('express');
 const db = require('./config/database.js');
 const loginRoutes = require('./routes/loginRoutes.js');
+const foodItemRoutes = require('./routes/foodItemRoutes.js');
 const menuRoutes = require('./routes/menuRoutes.js');
 
 
@@ -34,9 +35,8 @@ app.get('/', (req, res) => {
     res.send('<a href="/menu">Go to Menu</a>');
 });
 
-app.get('/login', (req, res) => {
-    res.render('login');
-});
+
 
 app.use(loginRoutes);
+app.use(foodItemRoutes);
 app.use('/menu', menuRoutes);           // handle all menu routes
