@@ -1,5 +1,5 @@
 const express = require('express');
-const FoodItem = require('../models/FoodItem.js');
+const { FoodItem } = require('../models/index.js');
 
 // create new router object to handle requests
 const router = express.Router();                // router to handle all requests to `/menu`

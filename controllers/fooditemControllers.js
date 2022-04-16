@@ -1,4 +1,4 @@
-const FoodItem = require('../models/foodItem.js');
+const { FoodItem } = require('../models/index.js');
 
 //get all food item
 async function itemsGet(req, res) {

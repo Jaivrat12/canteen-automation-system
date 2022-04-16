@@ -1,4 +1,4 @@
-const Customer = require('../models/customer');
+const { Customer } = require('../models/index.js');
 
 async function loginGet(req, res) {
     res.render('login', {error: false});
