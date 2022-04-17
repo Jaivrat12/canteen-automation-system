@@ -49,6 +49,7 @@ app.use(authRoutes);
 // auth check
 app.use((req, res, next) => {
 
+    // next(); return;                      // uncomment this to skip login
     console.log('cookie:', req.cookies);
     if (req.session.loggedIn) {
         next();
