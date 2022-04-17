@@ -1,0 +1,69 @@
+/* RESETS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+/* MAIN STYLES */
+.appbar {
+    padding: 1rem;
+    background: #ff004c;
+    background: #6400ac;
+    color: white;
+}
+
+.appbar a {
+    color: white;
+}
+
+.hamburger, .hamburger::before, .hamburger::after {
+    width: 1.5rem;
+    height: 0.15rem;
+    background: white;
+}
+
+.hamburger::before, .hamburger::after {
+    content: '';
+    position: absolute;
+    display: inline-block;
+}
+
+.hamburger::before {
+    transform: translateY(-0.4rem);
+}
+
+.hamburger::after {
+    transform: translateY(0.4rem);
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    text-align: center;
+}
+
+.nav-links li {
+    padding: 0.175rem;
+}
+
+.hidden {
+    display: none;
+}

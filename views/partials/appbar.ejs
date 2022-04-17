@@ -1,1 +1,35 @@
-<header></header>
+<header class="appbar">
+    <div class="toolbar">
+        <div class="hamburger"></div>
+        <a href="/logout">LOGOUT</a>
+    </div>
+    <nav>
+        <ul class="nav-links hidden">
+            <li>
+                <a href="/">HOME</a>
+            </li>
+            <li>
+                <a href="/alerts">NOTIFICATIONS</a>
+            </li>
+            <li>
+                <a href="/cart">YOUR CART</a>
+            </li>
+            <li>
+                <a href="/active-orders">ACTIVE ORDERS</a>
+            </li>
+            <li>
+                <a href="/order-history">ORDER HISTORY</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<script>
+
+    const menuBtn = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    menuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('hidden');
+    });
+
+</script>
