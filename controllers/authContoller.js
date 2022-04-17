@@ -15,7 +15,7 @@ async function loginPost(req, res) {
         req.session.loggedIn = true;
         req.session.userType = 'customer';
         req.session.userId = cus.id;
-        res.redirect('/');
+        res.redirect('/active-orders');
     } else {
         res.render('login', { error: true });
     }
