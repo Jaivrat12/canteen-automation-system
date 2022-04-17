@@ -1,0 +1,23 @@
+.heading {
+    text-align: center;
+}
+
+.item{
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart{
+    padding: 20px;
+}
+
+.total-price{
+    text-align: right;
+}
+
+.cart input[type="submit"],.cart button{
+    width: 100%;
+    margin-top: 8px;
+}
+
+

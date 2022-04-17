@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("partials/head.ejs") %>
+
+<body>
+
+    <h1 class="heading">Menu</h1>
+    <div class="menu">
+        <% for(let i=0;i<items.length;i++) {%>     
+        <div class="item">
+            <img src="/pizza.jpg" alt="Pizza" class="food-img">
+            <div class="food-info">
+                <div class="food-name">
+                    <%=items[i].name  %> 
+                </div>
+                <div class="food-price">
+                    Rs <%=items[i].price  %> 
+                    
+                </div>
+            </div>
+            <div class="actions">
+                <button class="add-btn" data-id="<%= items[i].id %> ">ADD +</button>
+                <input class="quantity hidden" type="number" id="quantity">
+            </div>
+
+        </div>
+
+        <% } %>
+    </div>
+
+</body>
+
+</html>

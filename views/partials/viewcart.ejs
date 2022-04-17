@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("partials/head.ejs") %>
+
+    <body>
+
+        <h1 class="heading">VIEW CART</h1>
+
+        <form action="/cart" method="post" class="cart">
+            <% for( let i=0; i < items.length; i++ ) { %>
+
+
+                <div class="item">
+                    <div>
+                        <%= items[i].quantity %> x <%= items[i].name %>
+                    </div>
+
+                    <div>Rs <%= items[i].price %>
+                    </div>
+
+
+                </div>
+                <% } %>
+
+                    <hr>
+
+                    <div class="total-price">total Rs <%= total %> </div>
+
+                    <input type="submit" name="confirm" value="confirm">
+                    <a href="/"><button>Go back to menu</button></a>
+
+
+        </form>
+    </body>
+
+</html>
