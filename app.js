@@ -5,7 +5,6 @@ const cookieParser = require('cookie-parser');
 
 const db = require('./config/database.js');
 const authRoutes = require('./routes/authRoutes.js');
-const menuRoutes = require('./routes/menuRoutes.js');
 const customerRoutes = require('./routes/customerRoutes.js');
 
 
@@ -14,7 +13,6 @@ const app = express();                  // returns an app object
 
 
 // app setup
-// app.set('trust proxy', 1)            // trust first proxy
 app.use(session({                       // using express-session middleware
     secret: 'some secret lol',
     resave: true,
@@ -56,9 +54,7 @@ app.use((req, res, next) => {
         next();
     } else {
         res.redirect('/login');
-        //next();
     }
 });
 
-app.use('/menu', menuRoutes);           // handle all menu routes
 app.use(customerRoutes);
