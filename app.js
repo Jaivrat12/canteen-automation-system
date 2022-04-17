@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const db = require('./config/database.js');
 const authRoutes = require('./routes/authRoutes.js');
 const menuRoutes = require('./routes/menuRoutes.js');
+const customerRoutes = require('./routes/customerRoutes.js');
 
 
 // creating an express app for the server
@@ -55,11 +56,9 @@ app.use((req, res, next) => {
         next();
     } else {
         res.redirect('/login');
+        //next();
     }
 });
 
-app.get('/', (req, res) => {
-    res.send('<a href="/menu">Go to Menu</a>');
-});
-
 app.use('/menu', menuRoutes);           // handle all menu routes
+app.use(customerRoutes);
