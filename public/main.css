@@ -18,6 +18,11 @@ li {
     list-style-type: none;
 }
 
+button {
+    color: white;
+    border-color: black;
+}
+
 /* MAIN STYLES */
 .appbar {
     padding: 1rem;

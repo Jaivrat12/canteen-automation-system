@@ -26,9 +26,31 @@
     border: 1px solid;
 }
 
-.quantity{
-    width: 70px;
-    display: block;
+.qty-input {
+    display: flex;
+    justify-content: space-between;
+    height: 1.5rem;
+    border: 2px solid #6400a4;
+    border-radius: 0.25rem;
+    background: #6400a4;
+}
+
+.increment, .decrement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 1rem;
+    color: white;
+    background: transparent;
+    border: none;
+}
+
+.qty-val {
+    padding: 0 0.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
 }
 
 .hidden{

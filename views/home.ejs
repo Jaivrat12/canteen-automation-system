@@ -23,11 +23,13 @@
                                 Rs <%=items[i].price %>
                             </div>
                         </div>
-                        <div class="actions">
-                            <button class="add-btn" data-id="<%= items[i].id %> ">ADD +</button>
-                            <input class="quantity hidden" type="number" id="quantity">
+                        <div class="qty-input">
+                            <button op="-" class="decrement">-</button>
+                            <div class="qty-val" item-id="<%= items[i].id %>">
+                                <%= items[i].quantity ?? 0 %>
+                            </div>
+                            <button op="+" class="increment">+</button>
                         </div>
-
                     </div>
 
                 <% } %>
