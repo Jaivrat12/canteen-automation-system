@@ -5,16 +5,18 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="/login.css">
-		<title>Login</title>
+		<title><%= isStaff ? 'Staff' : '' %> Login</title>
 	</head>
 
 	<body>
 
 		<div class="container">
-			<form action="/login" method="POST">
-				<div class="title">Login</div>
+			<form action="<%= isStaff ? '/staff' : '' %>/login" method="POST">
+				<div class="title"><%= isStaff ? 'Staff' : '' %> Login</div>
 				<% if (error) { %>
-					Invalid Credential
+					<div class="error">
+						Invalid Credentials!!!
+					</div>
 				<% } %>
 				<div class="input-box underline">
 					<input name="email" type="email" placeholder="Enter Your Email" required>

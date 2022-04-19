@@ -1,9 +1,16 @@
 const express = require('express');
-const { loginPost, loginGet, logoutPost } = require('../controllers/authContoller.js');
+const { loginPost, loginGet, logoutGet } = require('../controllers/authContoller.js');
 const router = express.Router();
 
+// customer login
 router.get('/login', loginGet);
 router.post('/login', loginPost);
-router.post('/logout', logoutPost);
+
+// staff login
+router.get('/staff/login', loginGet);
+router.post('/staff/login', loginPost);
+
+// logout
+router.get('/logout', logoutGet);
 
 module.exports = router;

@@ -58,4 +58,22 @@ app.use((req, res, next) => {
     }
 });
 
-app.use(customerRoutes);
+app.use('/staff', (req, res, next) => {
+
+    if (req.session.userType === 'staff') {
+        next();
+    } else {
+        res.redirect('/');
+    }
+}, (req, res) => {
+    res.send('<h1>Welcome Staff Memeber!</h1>');
+});
+
+app.use((req, res, next) => {
+
+    if (req.session.userType === 'customer') {
+        next();
+    } else {
+        res.redirect('/staff');
+    }
+}, customerRoutes);
