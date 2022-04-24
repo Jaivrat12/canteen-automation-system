@@ -13,7 +13,7 @@ cartBtns.forEach(async (cartBtn) => {
 
         itemQty.innerHTML = qty;
         let cart = JSON.parse((await cookieStore.get('cart'))?.value || '[]');
-        console.log(cart);
+        // console.table(cart);
         const itemId = itemQty.getAttribute('item-id');
         const item = cart.find(item => item.id === itemId);
         if (item) {
@@ -23,9 +23,10 @@ cartBtns.forEach(async (cartBtn) => {
             } else {
                 item.quantity = qty;
             }
-        } else {
+        } else if (qty !== 0) {
             cart.push({ id: itemId, quantity: qty });
         }
         await cookieStore.set('cart', JSON.stringify(cart));
+        console.table(cart);
     });
 });
