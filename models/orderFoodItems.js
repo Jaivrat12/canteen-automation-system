@@ -6,10 +6,6 @@ const FoodItem = require('./foodItem.js');
 
 const OrderFoodItems = db.define('order_food_items', {
 
-    quantity: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
     orderId: {
         type: myTypes.id.type,
         references: {
@@ -25,6 +21,13 @@ const OrderFoodItems = db.define('order_food_items', {
             key: 'id'
         },
         allowNull: false
+    },
+    quantity: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+            min: 1
+        }
     }
 }, {
     timestamps: false,

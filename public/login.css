@@ -30,6 +30,7 @@ html, body{
   font-weight: 600;
   margin: 20px 0 10px 0;
   position: relative;
+  text-align: center;
 }
 .container form .title:before{
   content: '';
@@ -39,7 +40,7 @@ html, body{
   left: 0px;
   bottom: 3px;
   border-radius: 5px;
-  background: linear-gradient(to right, #99004d 0%, #ff0080 100%);
+  /* background: linear-gradient(to right, #99004d 0%, #ff0080 100%); */
 }
 .container form .input-box{
   width: 100%;
@@ -100,5 +101,8 @@ html, body{
   text-align: center;
 }
 
-
-
+.error {
+  color: #ff224e;
+  text-align: center;
+  font-size: 0.85rem;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <%- include("partials/head.ejs") %>
+
+    <body>
+
+        <%- include('partials/appbar.ejs') %>
+
+        <h1 class="heading">TRACK ORDERS</h1>
+
+        <div class="order">
+
+            <div class="order-row">
+                <div class="order-id">
+                    order id: <%= order.id %>
+                </div>
+                <div class="status">
+                    status: <%= order.status %>
+                </div>
+            </div>
+
+
+            <% for( let i=0; i < order.items.length; i++ ) { %>
+
+                <div class="item">
+                    <div>
+                        <%= order.items[i].quantity %> x <%= order.items[i].name %>
+                    </div>
+                    <div>
+                        Rs <%= order.items[i].price %>
+                    </div>
+                </div>
+
+            <% } %>
+
+            <hr>
+
+            <div class="total-price">
+                total Rs <%= order.total %>
+            </div>
+
+            placed at : <%= order.createdAt %>
+
+        </div>
+
+    </body>
+
+</html>

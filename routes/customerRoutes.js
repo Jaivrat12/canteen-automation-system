@@ -3,37 +3,91 @@ const { FoodItem, Notification, Order } = require('../models');
 
 const router = express.Router();
 
-router.get('/',  async(req, res) => {
+router.get('/', async (req, res) => {
+
+    const cart = req.cookies.cart ? JSON.parse(req.cookies.cart) : [];
+    const cartItemIds = [];
+    cart.forEach((item) => {
+        cartItemIds.push(Number(item.id));
+    });
 
     const items = await FoodItem.findAll();
-    res.render('home', {items});
+    for (let i = 0; i < items.length; i++) {
+
+        const index = cartItemIds.indexOf(items[i].id);
+        if (index !== -1) {
+            items[i].quantity = cart[index].quantity;
+        }
+    }
+
+    res.render('home', { items });
 });
 
-router.get('/alerts', async(req, res) => {
+router.get('/alerts', async (req, res) => {
 
-    const notifications = await Notification.findAll({where: {customerId: req.session.userId}});
-    res.render('notification', {notifications});
+    const notifications = await Notification.findAll({ where: { customerId: req.session.userId } });
+    res.render('notifications', { notifications });
 });
 
-router.get('/cart', async(req, res) => {
+router.get('/cart', async (req, res) => {
 
-    const cart = {
-        items: [
-            { id: 1, name: 'abc', price: 123, quantity: 1 },
-            { id: 2, name: 'abc1', price: 124, quantity: 2 },
-            { id: 3, name: 'abc2', price: 125, quantity: 3 },
-        ],
-        total: 12345
-    };
-    res.render('cart', cart);
+    const cart = req.cookies.cart ? JSON.parse(req.cookies.cart) : [];
+    const itemIds = [];
+    cart.forEach((item) => {
+        itemIds.push(item.id);
+    });
+
+    const items = await FoodItem.findAll({ where: { id: itemIds } });
+
+    let total = 0;
+    for (let i = 0; i < items.length; i++) {
+
+        items[i].quantity = cart[i].quantity;
+        total += Number(items[i].price) * cart[i].quantity;
+    }
+
+    res.render('cart', { items, total });
 });
 
-router.post('/cart', async(req, res) => {
+router.post('/cart', async (req, res) => {
 
-    res.redirect('/');
+    const cart = req.cookies.cart ? JSON.parse(req.cookies.cart) : [];
+
+    if (cart.length === 0) {
+
+        res.redirect('/');
+        return;
+    }
+
+    const itemIds = [];
+    cart.forEach((item) => {
+        itemIds.push(item.id);
+    });
+
+    const items = await FoodItem.findAll({ where: { id: itemIds } });
+
+    let total = 0;
+    for (let i = 0; i < items.length; i++) {
+
+        items[i].quantity = cart[i].quantity;
+        total += Number(items[i].price) * cart[i].quantity;
+    }
+
+    const order = await Order.create({
+        status: 'pending',
+        total: total,
+        customerId: req.session.userId
+    });
+
+    items.forEach(async (item) => {
+        await order.addFood_items(item, { through: { quantity: item.quantity } })
+    });
+
+    res.cookie('cart', '');
+    res.redirect('/track-order/' + order.id);
 });
 
-router.get('/active-orders', async(req, res) => {
+router.get('/active-orders', async (req, res) => {
 
     const activeOrders = await Order.findAll({
         where: {
@@ -41,18 +95,52 @@ router.get('/active-orders', async(req, res) => {
             status: ['accepted', 'pending', 'preparing', 'complete']
         },
         include: 'food_items'
+    });
 
+    for (let i = 0; i < activeOrders.length; i++) {
+
+        const items = [];
+        for (let j = 0; j < activeOrders[i].food_items.length; j++) {
+            items.push(activeOrders[i].food_items[j].name);
+        }
+        activeOrders[i].items = items.join(', ');
+    }
+
+    res.render('active-orders', { orders: activeOrders });
+});
+
+router.get('/track-order/:id', async (req, res) => {
+
+    const id = req.params.id;
+    const order = await Order.findByPk(id, { include: 'food_items' });
+
+    order.items = order.food_items;
+    for (let i = 0; i < order.items.length; i++) {
+        order.items[i].quantity = order.food_items[i].order_food_items.quantity;
+    }
+
+    res.render('track-order', { order });
+});
+
+router.get('/order-history', async (req, res) => {
+
+    const orders = await Order.findAll({
+        where: {
+            customerId: req.session.userId,
+            status: ['delivered', 'rejected']
+        },
+        include: 'food_items'
     })
-    console.log(activeOrders[0].toJSON());
-    console.log(activeOrders[0].food_items[0].toJSON());
-    const orders = {
-        orders: [
-            { id: 1, name: 'abc', items: 'item1, item2, item3', total: 300 },
-            { id: 2, name: 'abc1', items: 'item1, item2, item3', total: 400 },
-            { id: 3, name: 'abc2', items: 'item1, item2, item3', total: 600 },
-        ]
-    };
-    res.render('active-orders', orders);
+
+    for (let j = 0; j < orders.length; j++) {
+
+        orders[j].items = orders[j].food_items;
+        for (let i = 0; i < orders[j].items.length; i++) {
+            orders[j].items[i].quantity = orders[j].food_items[i].order_food_items.quantity;
+        }
+    }
+
+    res.render('order-history', { orders });
 });
 
 module.exports = router;
