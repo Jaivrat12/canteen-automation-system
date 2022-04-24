@@ -7,56 +7,54 @@
 
         <%- include('../partials/navbar.ejs') %>
 
-            <h1 class="heading">ORDER HISTORY</h1>
-            <% for( let i=0; i < orders.length; i++ ) { %>
-                <div class="order">
-                    <div class="order-row">
-                        <div class="customer-id">
-                            Customer id: <%= customer.id %>
+        <h1 class="heading">ORDER HISTORY</h1>
+
+        <% for( let i=0; i < orders.length; i++ ) { %>
+
+            <div class="order">
+
+                <div class="order-row">
+                    <div class="customer-id">
+                        Customer id: <%= orders[i].customer.id %>
+                    </div>
+                    <div class="customer-name">
+                        Placed by: <%= orders[i].customer.name%>
+                    </div>
+                </div>
+
+                <div class="order-row">
+                    <div class="order-id">
+                        order id: <%= orders[i].id %>
+                    </div>
+                    <div class="status">
+                        status: <%= orders[i].status %>
+                    </div>
+                </div>
+
+                <% for( let j=0; j < orders[i].items.length; j++ ) { %>
+
+                    <div class="item">
+                        <div>
+                            <%= orders[i].items[j].quantity %> x <%= orders[i].items[j].name %>
                         </div>
-                        <div class="customer-name">
-                            Customer Name: <%= customer.name%>
+                        <div>
+                            Rs <%= orders[i].items[j].price %>
                         </div>
                     </div>
 
-                    <div class="order-row">
-                        <div class="order-id">
-                            order id: <%= id %>
-                        </div>
-                        <div class="status">
-                            status: <%= status %>
-                        </div>
-                    </div>
+                <% } %>
 
+                <hr>
 
+                <div class="total-price">
+                    total Rs <%= orders[i].total %>
+                </div>
 
+                placed at : <%= orders[i].createdAt %>
 
+            </div>
 
-                    <% for( let i=0; i < items.length; i++ ) { %>
-
-                        <div class="item">
-                            <div>
-                                <%= items[i].quantity %> x <%= items[i].name %>
-                            </div>
-                            <div>
-                                Rs <%= items[i].price %>
-                            </div>
-                        </div>
-
-                        <% } %>
-
-
-
-                            <hr>
-
-                            <div class="total-price">
-                                total Rs <%= total %>
-                            </div>
-
-                            placed at : <%= time %>
-
-                                <% } %>
-
+        <% } %>
 
     </body>
 

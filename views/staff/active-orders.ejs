@@ -7,14 +7,14 @@
 
         <%- include('../partials/navbar.ejs') %>
 
-        <h1 class="heading">VIEW ALL ONGOING ORDERS</h1>
-
+        <h1 class="heading">ACTIVE ORDERS OF ALL CUSTOMERS</h1>
 
         <% for( let i=0; i < orders.length; i++ ) { %>
 
             <div class="order">
+
                 <div class="customer-name">
-                    Customer Name: <%= orders[i].customer.name%> 
+                    Placed by: <%= orders[i].customer.name %>
                 </div>
 
                 <div class="order-row">
@@ -36,6 +36,9 @@
                 </div>
 
             </div>
-            <% } %>
+
+        <% } %>
+
     </body>
+
 </html>
