@@ -7,58 +7,59 @@
 
         <%- include('../partials/navbar.ejs') %>
 
-            <h1 class="heading">ACTIVE ORDER</h1>
+        <h1 class="heading">ACTIVE ORDER</h1>
 
-            <div class="order">
-                <div class="order-row">
-                    <div class="order-id">
-                        order id: <%= id %>
+        <div class="order">
+
+            <div class="order-row">
+                <div class="order-id">
+                    order id: <%= order.id %>
+                </div>
+                <form action="/orders" method="post" class="status-form">
+                    <select name="status">
+                        <option value="pending">Pending</option>
+                        <option value="accepted">Accepted</option>
+                        <option value="rejected">Rejectec</option>
+                        <option value="preparing">Preparing</option>
+                        <option value="completed">Completed</option>
+                        <option value="delivered">Delivered</option>
+                    </select>
+                    <input type="submit" name="update-status" value="update-status">
+                </form>
+            </div>
+
+            <% for( let i=0; i < order.items.length; i++ ) { %>
+
+                <div class="item">
+                    <div>
+                        <%= order.items[i].quantity %> x <%= order.items[i].name %>
                     </div>
-                    <form action="/orders" method="post" class="status-form">
-                            <select name="status">
-                            <option value="pending">Pending</option>
-                            <option value="accepted">Accepted</option>
-                            <option value="rejected">Rejectec</option>
-                            <option value="preparing">Preparing</option>
-                            <option value="completed">Completed</option>
-                            <option value="delivered">Delivered</option>
-                            </select>
-                            <input type="submit" name="update-status" value="update-status">
-                        </form>
+                    <div>
+                        Rs <%= order.items[i].price %>
+                    </div>
                 </div>
 
+            <% } %>
 
-                <% for( let i=0; i < items.length; i++ ) { %>
+            <hr>
 
-                    <div class="item">
-                        <div>
-                            <%= items[i].quantity %> x <%= items[i].name %>
-                        </div>
-                        <div>
-                            Rs <%= items[i].price %>
-                        </div>
-                    </div>
+            <div class="total-price">
+                total Rs <%= order.total %>
+            </div>
 
-                    <% } %>
+            placed at : <%= order.createdAt %>
 
-                        <hr>
+            <div class="customer-details">
+                <h5>Customer Details</h5>
+                <div>id: <%= order.customer.id %></div>
+                <div>name: <%= order.customer.name %></div>
+                <div>email: <%= order.customer.email %></div>
+                <div>phone no: <%= order.customer.phone%></div>
+                <div>role: <%= order.customer.role%></div>
+                <div>department: <%= order.customer.department%></div>
+            </div>
 
-                        <div class="total-price">
-                            total Rs <%= total %>
-                        </div>
-
-                        placed at : <%= time %> 
-
-                        <div class="customer=details">
-                            <h2>Customwr Details</h2>
-                            <div>id: <%= customer.id %> </div>
-                            <div>name: <%= customer.name %> </div>
-                            <div>email: <%= customer.email %> </div>
-                            <div>phone no: <%= customer.phone%> </div>
-                            <div>role: <%= customer.role%> </div>
-                            <div>department: <%= customer.department%> </div>
-                        </div>
-
+        </div>
 
     </body>
 
