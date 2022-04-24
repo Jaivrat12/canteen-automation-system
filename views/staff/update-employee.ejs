@@ -6,41 +6,41 @@
 <body>
     <%- include('../partials/navbar.ejs') %>
 
-    <h1 class="heading">ADD Employee</h1>
+    <h1 class="heading">Update Employee</h1>
 
     <div class="container">
-        <form action="/add-employee" method="post" class="add-employee">
+        <form action="/update-employee" method="post" class="update-employee">
             <div class="form-input">
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name">
+                <input type="text" name="name" value="<%= employee.name %>">
             </div>
 
             <br>
 
             <div class="form-input">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email">
+                <input type="text" name="email" value="<%= employee.email %>">
             </div>
 
             <br>
 
             <div class="form-input">
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password">
+                <input type="text" name="password" value="<%= employee.password %>">
             </div>
 
             <br>
 
             <div class="form-input">
                 <label for="phone">Phone:</label>
-                <input type="text" id="phone" name="phone">
+                <input type="text" name="phone" value="<%= employee.phone %>">
             </div>
 
             <br>
 
             <div class="form-input">
-                <input type="checkbox" id="admin" name="isadmin">
                 <label for="isadmin">Admin</label>
+                <input type="checkbox" name="isadmin" value="<%= employee.isadmin %>">
             </div>
 
             <br>
