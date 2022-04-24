@@ -1,0 +1,38 @@
+.heading {
+    text-align: center;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.active {
+    padding: 20px;
+}
+
+
+.status-form{
+    display: flex;
+    gap: 8px;
+}
+
+.order {
+    margin: 20px;
+    padding: 20px;
+
+}
+
+.order-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.total-price {
+    text-align: right;
+}
+
+.active input[type="submit"] {
+    width: 10%;
+    margin-top: 8px;
+}
