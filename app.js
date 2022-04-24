@@ -2,15 +2,12 @@
 const express = require('express');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-
 const db = require('./config/database.js');
-const authRoutes = require('./routes/authRoutes.js');
-const customerRoutes = require('./routes/customerRoutes.js');
+const routes = require('./routes/index.js');
 
 
 // creating an express app for the server
 const app = express();                  // returns an app object
-
 
 // app setup
 app.use(session({                       // using express-session middleware
@@ -32,7 +29,6 @@ app.use(express.urlencoded({            // parses urlencoded payloads like form 
     extended: true                      // to support rich object syntax (nested object)
 }));
 
-
 // setting up connection to database
 db.authenticate();
 db.sync({ alter: true }).then(() => {
@@ -42,38 +38,25 @@ db.sync({ alter: true }).then(() => {
     app.listen(PORT, () => console.log(`listening on port ${ PORT }`));
 });
 
+// this middleware is just for dev purposes
+// it allows you to choose a userType at the start without having to login
+app.use((req, res, next) => {
+
+    // next(); return;
+    const admin = { userId: 1, userType: 'staff', isAdmin: true };
+    const manager = { userId: 2, userType: 'staff', isAdmin: false };
+    const customer = { userId: 1, userType: 'customer' };
+    const user = customer;
+
+    if (!req.session.loggedIn) {
+
+        req.session.loggedIn = true;
+        req.session.userId = user.userId;
+        req.session.userType = user.userType;
+        req.session.isAdmin = user.isAdmin;
+    }
+    next();
+});
 
 // app routing
-app.use(authRoutes);
-
-// auth check
-app.use((req, res, next) => {
-
-    //next(); return;                      // uncomment this to skip login
-    console.log('cookie:', req.cookies);
-    if (req.session.loggedIn) {
-        next();
-    } else {
-        res.redirect('/login');
-    }
-});
-
-app.use('/staff', (req, res, next) => {
-
-    if (req.session.userType === 'staff') {
-        next();
-    } else {
-        res.redirect('/');
-    }
-}, (req, res) => {
-    res.send('<h1>Welcome Staff Memeber!</h1>');
-});
-
-app.use((req, res, next) => {
-
-    if (req.session.userType === 'customer') {
-        next();
-    } else {
-        res.redirect('/staff');
-    }
-}, customerRoutes);
+app.use(routes);

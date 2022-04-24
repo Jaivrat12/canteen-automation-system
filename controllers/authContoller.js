@@ -48,8 +48,19 @@ async function logoutGet(req, res) {
     }
 }
 
+function checkUser(userType, redirect) {
+
+    return (req, res, next) => {
+
+        if (req.session.userType === userType) {
+            next();
+        } else {
+            res.redirect(redirect);
+        }
+    };
+}
+
 module.exports = {
-    loginGet,
-    loginPost,
-    logoutGet
+    loginGet, loginPost,
+    logoutGet, checkUser
 };
