@@ -72,3 +72,23 @@ button {
 .hidden {
     display: none;
 }
+
+.navbar .nav-links{
+    display: flex;
+}
+
+.navbar .nav-links li{
+    padding: 12px;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    padding: 1rem;
+    background: #6400ac;
+    color: white;
+}
+
+.navbar a {
+    color: white;
+}
