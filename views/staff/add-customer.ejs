@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<%- include("../partials/head.ejs") %>
+
+    </head>
+
+    <body>
+        <%- include('../partials/navbar.ejs') %>
+
+            <h1 class="heading">Add Customer</h1>
+
+            <div class="container">
+                <form action="/add-customer" method="post" class="add-customer">
+
+                    <div class="form-input">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name">
+                    </div>
+
+                    <br>
+
+                    <div class="form-input">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email">
+                    </div>
+
+                    <br>
+
+                    <div class="form-input">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password">
+                    </div>
+
+                    <br>
+
+                    <div class="form-input">
+                        <label for="phone">Phone:</label>
+                        <input type="text" id="phone">
+                    </div>
+
+                    <br>
+
+                    <div class="form-input">
+                        <label for="role">Role:</label>
+                        <input type="text" id="role">
+                    </div>
+
+                    <br>
+
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+
+    </body>
+
+</html>
