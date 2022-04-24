@@ -20,13 +20,13 @@ router.get('/', async (req, res) => {
         }
     }
 
-    res.render('home', { items });
+    res.render('customer/home', { items });
 });
 
 router.get('/alerts', async (req, res) => {
 
     const notifications = await Notification.findAll({ where: { customerId: req.session.userId } });
-    res.render('notifications', { notifications });
+    res.render('customer/notifications', { notifications });
 });
 
 router.get('/cart', async (req, res) => {
@@ -46,7 +46,7 @@ router.get('/cart', async (req, res) => {
         total += Number(items[i].price) * cart[i].quantity;
     }
 
-    res.render('cart', { items, total });
+    res.render('customer/cart', { items, total });
 });
 
 router.post('/cart', async (req, res) => {
@@ -106,7 +106,7 @@ router.get('/active-orders', async (req, res) => {
         activeOrders[i].items = items.join(', ');
     }
 
-    res.render('active-orders', { orders: activeOrders });
+    res.render('customer/active-orders', { orders: activeOrders });
 });
 
 router.get('/track-order/:id', async (req, res) => {
@@ -119,7 +119,7 @@ router.get('/track-order/:id', async (req, res) => {
         order.items[i].quantity = order.food_items[i].order_food_items.quantity;
     }
 
-    res.render('track-order', { order });
+    res.render('customer/track-order', { order });
 });
 
 router.get('/order-history', async (req, res) => {
@@ -140,7 +140,7 @@ router.get('/order-history', async (req, res) => {
         }
     }
 
-    res.render('order-history', { orders });
+    res.render('customer/order-history', { orders });
 });
 
 module.exports = router;
