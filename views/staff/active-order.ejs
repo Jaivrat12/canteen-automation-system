@@ -15,14 +15,38 @@
                 <div class="order-id">
                     order id: <%= order.id %>
                 </div>
-                <form action="/orders" method="post" class="status-form">
+                <form action="/orders/<%= order.id %>/update" method="post" class="status-form">
                     <select name="status">
-                        <option value="pending">Pending</option>
-                        <option value="accepted">Accepted</option>
-                        <option value="rejected">Rejectec</option>
-                        <option value="preparing">Preparing</option>
-                        <option value="completed">Completed</option>
-                        <option value="delivered">Delivered</option>
+                        <option value="pending"
+                            <%= order.status === 'pending' ? 'selected' : '' %>
+                        >
+                            Pending
+                        </option>
+                        <option value="accepted"
+                            <%= order.status === 'accepted' ? 'selected' : '' %>
+                        >
+                            Accepted
+                        </option>
+                        <option value="rejected"
+                            <%= order.status === 'rejected' ? 'selected' : '' %>
+                        >
+                            Rejected
+                        </option>
+                        <option value="preparing"
+                            <%= order.status === 'preparing' ? 'selected' : '' %>
+                        >
+                            Preparing
+                        </option>
+                        <option value="completed"
+                            <%= order.status === 'completed' ? 'selected' : '' %>
+                        >
+                            Completed
+                        </option>
+                        <option value="delivered"
+                            <%= order.status === 'delivered' ? 'selected' : '' %>
+                        >
+                            Delivered
+                        </option>
                     </select>
                     <input type="submit" name="update-status" value="update-status">
                 </form>
