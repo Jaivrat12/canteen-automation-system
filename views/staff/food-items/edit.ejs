@@ -1,42 +1,44 @@
 <!DOCTYPE html>
 <html>
 
-<%- include("../partials/head.ejs") %>
+<%- include("../../partials/head.ejs") %>
 
     <body>
-        <%- include('../partials/navbar.ejs') %>
+        <%- include('../../partials/navbar.ejs') %>
 
             <h1 class="heading">Update Food-Item</h1>
 
             <div class="container">
-                <form action="/update-item" method="post" class="update-item">
+                <form action="/staff/food-items/<%= item.id %>/edit" method="post" class="update-item" encType="multipart/form-data">
                     <div class="form-input">
                         <label for="name">Name:</label>
-                        <input type="text" name="name" value="<%= item.name %>">
+                        <input type="text" name="name" value="<%= item.name %>" required>
                     </div>
 
                     <br>
 
                     <div class="form-input">
                         <label for="price">Price:</label>
-                        <input type="text" name="price" value="<%= item.price %>">
+                        <input type="number" step="any" name="price" value="<%= item.price %>" min="0" max="1000" required>
                     </div>
 
                     <br>
 
                     <div class="form-input">
                         <label for="image">Image:</label>
-                        <input type="file" name="file" value="<%= item.file %>">
+                        <input type="file" name="image">
 
                     </div>
 
                     <br>
 
                     <div class="form-input">
-                        <input type="checkbox" id="isAvailable" name="isAvailable">
-                        <label for="Available">Available</label>
+                        <input type="checkbox" id="isAvailable" name="isAvailable"
+                            <% item.isAvailable ? "checked" : "" %>
+                        >
+                        <label for="isAvailable">Is Available</label>
                     </div>
-        
+
                     <br>
 
                     <input type="submit" value="Submit">

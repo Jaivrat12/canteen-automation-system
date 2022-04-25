@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html>
 
-<%- include("../partials/head.ejs") %>
+<%- include("../../partials/head.ejs") %>
 
     <body>
-        <%- include('../partials/navbar.ejs') %>
+        <%- include('../../partials/navbar.ejs') %>
 
             <h1 class="heading">Update Customer</h1>
 
             <div class="container">
-                <form action="/update-customer" method="post" class="update-customer">
+                <form action="/staff/customers/<%= customer.id %>/edit" method="post" class="update-customer">
 
                     <div class="form-input">
                         <label for="name">Name:</label>
-                        <input type="text" name="name" value="<%= customer.name %>">
+                        <input type="text" name="name" value="<%= customer.name %>" required>
                     </div>
 
                     <br>
 
                     <div class="form-input">
                         <label for="email">Email:</label>
-                        <input type="email" name="email" value="<%= customer.email %>">
+                        <input type="email" name="email" value="<%= customer.email %>" required>
                     </div>
 
                     <br>
 
                     <div class="form-input">
                         <label for="password">Password:</label>
-                        <input type="password" name="password" value="<%= customer.password %>">
+                        <input type="password" name="password" value="" required>
                     </div>
 
                     <br>
 
                     <div class="form-input">
                         <label for="phone">Phone:</label>
-                        <input type="text" name="phone" value="<%= customer.phone %>">
+                        <input type="text" name="phone" value="<%= customer.phone %>" minlength="10" maxlength="10" required>
                     </div>
 
                     <br>
 
                     <div class="form-input">
                         <label for="role">Role:</label>
-                        <input type="text" name="role" value="<%= customer.role %>">
+                        <input type="text" name="role" value="<%= customer.role %>" required>
                     </div>
 
                     <br>
 
                     <div class="form-input">
                         <label for="department">Department:</label>
-                        <input type="text" name="department" value="<%= customer.department %>">
+                        <input type="text" name="department" value="<%= customer.department %>" required>
                     </div>
 
                     <br>

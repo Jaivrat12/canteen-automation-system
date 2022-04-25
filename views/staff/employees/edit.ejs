@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html>
 
-    <%- include("../partials/head.ejs") %>
+    <%- include("../../partials/head.ejs") %>
 
 <body>
-    <%- include('../partials/navbar.ejs') %>
+    <%- include('../../partials/navbar.ejs') %>
 
     <h1 class="heading">Update Employee</h1>
 
     <div class="container">
-        <form action="/update-employee" method="post" class="update-employee">
+        <form action="/staff/employees/<%= employee.id %>/edit" method="post" class="update-employee">
             <div class="form-input">
                 <label for="name">Name:</label>
-                <input type="text" name="name" value="<%= employee.name %>">
+                <input type="text" name="name" value="<%= employee.name %>" required>
             </div>
 
             <br>
 
             <div class="form-input">
                 <label for="email">Email:</label>
-                <input type="text" name="email" value="<%= employee.email %>">
+                <input type="text" name="email" value="<%= employee.email %>" required>
             </div>
 
             <br>
 
             <div class="form-input">
                 <label for="password">Password:</label>
-                <input type="text" name="password" value="<%= employee.password %>">
+                <input type="text" name="password" value="" required>
             </div>
 
             <br>
 
             <div class="form-input">
                 <label for="phone">Phone:</label>
-                <input type="text" name="phone" value="<%= employee.phone %>">
+                <input type="text" name="phone" value="<%= employee.phone %>" required>
             </div>
 
             <br>
 
             <div class="form-input">
-                <label for="isAdmin">Admin</label>
-                <input type="checkbox" name="isAdmin" value="<%= employee.isAdmin %>">
+                <input type="checkbox" name="isAdmin" value="<%= employee.isAdmin %>" required>
+                <label for="isAdmin">Has Admin Rights</label>
             </div>
 
             <br>

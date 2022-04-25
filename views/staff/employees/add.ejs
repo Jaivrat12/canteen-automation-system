@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html>
 
-    <%- include("../partials/head.ejs") %>
+    <%- include("../../partials/head.ejs") %>
 
 <body>
-    <%- include('../partials/navbar.ejs') %>
+    <%- include('../../partials/navbar.ejs') %>
 
     <h1 class="heading">ADD Employee</h1>
 
     <div class="container">
-        <form action="/add-employee" method="post" class="add-employee">
+        <form action="/staff/employees/add" method="post" class="add-employee">
             <div class="form-input">
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name">
+                <input type="text" id="name" name="name" required>
             </div>
 
             <br>
 
             <div class="form-input">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email">
+                <input type="email" id="email" name="email" required>
             </div>
 
             <br>
 
             <div class="form-input">
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password">
+                <input type="password" id="password" name="password" required>
             </div>
 
             <br>
 
             <div class="form-input">
                 <label for="phone">Phone:</label>
-                <input type="text" id="phone" name="phone">
+                <input type="text" id="phone" name="phone" required>
             </div>
 
             <br>
 
             <div class="form-input">
                 <input type="checkbox" id="isAdmin" name="isAdmin">
-                <label for="isAdmin">Admin</label>
+                <label for="isAdmin">Has Admin Rights</label>
             </div>
 
             <br>
