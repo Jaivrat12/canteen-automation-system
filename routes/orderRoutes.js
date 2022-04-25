@@ -62,7 +62,7 @@ router.post('/:id/update', checkUser('staff', '/staff/login'), async (req, res) 
             await order.save();
 
             const { title, body } = getNotificationContent(order.status);
-            const href = '/track-orders/' + id;
+            const href = '/track-order/' + id;
             const notification = await Notification.create({
                 title, body, href,
                 customerId: order.customerId

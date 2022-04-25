@@ -1,0 +1,13 @@
+.heading {
+    margin: 1rem 0 2rem;
+}
+
+.notif-wrapper {
+    padding: 0 1rem;
+}
+
+.notification {
+    margin-bottom: 1.5rem;
+    color: #000;
+    border-bottom: 1px solid #3333;
+}

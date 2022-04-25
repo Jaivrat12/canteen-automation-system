@@ -1,5 +1,5 @@
 const express = require('express');
-const { FoodItem, Notification, Order } = require('../models');
+const { FoodItem, Notification, Order } = require('../models/index.js');
 
 const router = express.Router();
 
@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
     res.render('customer/home', { items });
 });
 
-router.get('/alerts', async (req, res) => {
+router.get('/notifications', async (req, res) => {
 
     const notifications = await Notification.findAll({ where: { customerId: req.session.userId } });
     res.render('customer/notifications', { notifications });
