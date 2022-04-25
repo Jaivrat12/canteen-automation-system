@@ -2,6 +2,8 @@
 const express = require('express');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const fileUpload = require('express-fileupload');
+const cloudinary = require('cloudinary').v2;
 const db = require('./config/database.js');
 const routes = require('./routes/index.js');
 
@@ -28,6 +30,16 @@ app.use(express.static('public'));      // use `public` folder for hosting stati
 app.use(express.urlencoded({            // parses urlencoded payloads like form data
     extended: true                      // to support rich object syntax (nested object)
 }));
+app.use(fileUpload({
+    useTempFiles : true,
+    tempFileDir : '/tmp/'
+}));
+
+cloudinary.config({
+    cloud_name: 'elite-cloud',
+    api_key: '587434232559684',
+    api_secret: 'DBGR_1wdvQDJBJzL0bqSBuvEoLk'
+});
 
 // setting up connection to database
 db.authenticate();
