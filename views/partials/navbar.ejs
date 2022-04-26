@@ -5,8 +5,10 @@
 			<li><a href="/staff/active-orders">ACTIVE ORDERS</a></li>
 			<li><a href="/staff/order-history">ORDER HISTORY</a></li>
 			<li><a href="/staff/food-items">FOOD ITEMS</a></li>
-			<li><a href="/staff/employees">EMPLOYEES</a></li>
-			<li><a href="/staff/customers">CUSTOMERS</a></li>
+			<% if (isAdmin) { %>
+				<li><a href="/staff/employees">EMPLOYEES</a></li>
+				<li><a href="/staff/customers">CUSTOMERS</a></li>
+			<% } %>
 		</ul>
 	</nav>
 

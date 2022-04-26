@@ -8,11 +8,14 @@ const router = express.Router();
 router.get('/', async (req, res) => {
 
     const items = await FoodItem.findAll();
-    res.render('staff/food-items/view', { items });
+    res.render('staff/food-items/view', {
+        isAdmin: req.session.isAdmin,
+        items
+    });
 });
 
 router.get('/add', async (req, res) => {
-    res.render('staff/food-items/add');
+    res.render('staff/food-items/add', { isAdmin: req.session.isAdmin });
 });
 
 // router.get('/:id', async (req, res) => {
@@ -50,7 +53,10 @@ router.get('/:id/edit', async (req, res) => {
         const item = await FoodItem.findByPk(id);
         if (item) {
 
-            res.render('staff/food-items/edit', { item });
+            res.render('staff/food-items/edit', {
+                isAdmin: req.session.isAdmin,
+                item
+            });
             return;
         }
     }

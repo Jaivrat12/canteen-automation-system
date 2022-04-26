@@ -26,7 +26,10 @@ router.get('/active-orders', async (req, res) => {
         activeOrders[i].items = items.join(', ');
     }
 
-    res.render('staff/active-orders', { orders: activeOrders });
+    res.render('staff/active-orders', {
+        isAdmin: req.session.isAdmin,
+        orders: activeOrders
+    });
 });
 
 router.get('/active-order/:id', async (req, res) => {
@@ -41,7 +44,10 @@ router.get('/active-order/:id', async (req, res) => {
         activeOrder.items[i].quantity = activeOrder.food_items[i].order_food_items.quantity;
     }
 
-    res.render('staff/active-order', { order: activeOrder });
+    res.render('staff/active-order', {
+        isAdmin: req.session.isAdmin,
+        order: activeOrder
+    });
 });
 
 router.get('/order-history', async (req, res) => {
@@ -59,7 +65,10 @@ router.get('/order-history', async (req, res) => {
         }
     }
 
-    res.render('staff/order-history', { orders });
+    res.render('staff/order-history', {
+        isAdmin: req.session.isAdmin,
+        orders
+    });
 });
 
 

@@ -48,11 +48,24 @@ async function logoutGet(req, res) {
     }
 }
 
+function authCheck(req, res, next) {
+
+    console.log('cookie:', req.cookies);
+    if (req.session.loggedIn) {
+        next();
+    } else {
+        res.redirect('/login');
+    }
+}
+
 function checkUser(userType, redirect) {
 
     return (req, res, next) => {
 
-        if (req.session.userType === userType) {
+        if (userType === 'admin' && req.session.isAdmin) {
+            next();
+        }
+        else if (req.session.userType === userType) {
             next();
         } else {
             res.redirect(redirect);
@@ -61,6 +74,6 @@ function checkUser(userType, redirect) {
 }
 
 module.exports = {
-    loginGet, loginPost,
-    logoutGet, checkUser
+    loginGet, loginPost, logoutGet,
+    authCheck, checkUser
 };

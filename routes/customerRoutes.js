@@ -6,11 +6,14 @@ const router = express.Router();
 router.get('/', async (req, res) => {
 
     const customers = await Customer.findAll();
-    res.render('staff/customers/view', { customers });
+    res.render('staff/customers/view', {
+        isAdmin: req.session.isAdmin,
+        customers
+    });
 });
 
 router.get('/add', async (req, res) => {
-    res.render('staff/customers/add');
+    res.render('staff/customers/add', { isAdmin: req.session.isAdmin });
 });
 
 router.post('/add', async (req, res) => {
@@ -34,7 +37,10 @@ router.get('/:id/edit', async (req, res) => {
         const customer = await Customer.findByPk(id);
         if (customer) {
 
-            res.render('staff/customers/edit', { customer });
+            res.render('staff/customers/edit', {
+                isAdmin: req.session.isAdmin,
+                customer
+            });
             return;
         }
     }
@@ -45,7 +51,7 @@ router.post('/:id/edit', async (req, res) => {
 
     const id = req.params.id;
     const updates = req.body;
-   
+
     await Customer.update(updates, { where: { id: id } });
     res.redirect('/staff/customers');
 });
@@ -54,7 +60,7 @@ router.get('/:id/delete', async (req, res) => {
 
     const id = req.params.id;
     await Customer.destroy({ where: { id: id } });
-    
+
     res.redirect('/staff/customers');
 });
 

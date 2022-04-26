@@ -6,11 +6,14 @@ const router = express.Router();
 router.get('/', async (req, res) => {
 
     const employees = await Employee.findAll();
-    res.render('staff/employees/view', { employees });
+    res.render('staff/employees/view', {
+        isAdmin: req.session.isAdmin,
+        employees
+    });
 });
 
 router.get('/add', async (req, res) => {
-    res.render('staff/employees/add');
+    res.render('staff/employees/add', { isAdmin: req.session.isAdmin });
 });
 
 router.post('/add', async (req, res) => {
@@ -18,7 +21,6 @@ router.post('/add', async (req, res) => {
     try {
         const employee = await Employee.create(req.body);
         await employee.save();
-        console.log(employee.toJSON());
     } catch (err) {
         console.log(err);
     }
@@ -28,18 +30,21 @@ router.post('/add', async (req, res) => {
 router.get('/:id/edit', async (req, res) => {
 
     const id = req.params.id;
-    
+
     // handle condition where id is Not A Number
     if (Number(id) !== NaN) {
 
         const employee = await Employee.findByPk(id);
         if (employee) {
-            console.log(1);
-            res.render('staff/employees/edit', { employee });
+
+            res.render('staff/employees/edit', {
+                isAdmin: req.session.isAdmin,
+                employee
+            });
             return;
         }
     }
-   
+
     res.send('Requested resource is unavailable');
 });
 
@@ -57,7 +62,6 @@ router.get('/:id/delete', async (req, res) => {
 
     const id = req.params.id;
     await Employee.destroy({ where: { id: id } });
-    
     res.redirect('/staff/employees');
 });
 
