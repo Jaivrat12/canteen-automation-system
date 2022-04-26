@@ -58,7 +58,7 @@ app.use((req, res, next) => {
     const admin = { userId: 1, userType: 'staff', isAdmin: true };
     const manager = { userId: 2, userType: 'staff', isAdmin: false };
     const customer = { userId: 1, userType: 'customer' };
-    const user = manager;
+    const user = admin;
 
     if (!req.session.loggedIn) {
 

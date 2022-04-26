@@ -26,7 +26,7 @@
 
             <div class="form-input">
                 <label for="password">Password:</label>
-                <input type="text" name="password" value="" required>
+                <input type="text" name="password" value="<%= employee.password %>" required>
             </div>
 
             <br>
@@ -39,7 +39,7 @@
             <br>
 
             <div class="form-input">
-                <input type="checkbox" name="isAdmin" value="<%= employee.isAdmin %>" required>
+                <input type="checkbox" name="isAdmin" <%= employee.isAdmin ? "checked" : "" %> required>
                 <label for="isAdmin">Has Admin Rights</label>
             </div>
 

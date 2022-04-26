@@ -1,73 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%- include("../../partials/head.ejs") %>
+    <%- include("../../partials/head.ejs") %>
 
     <style>
         table {
-            width: 100%;
+            margin: 0 auto;
+            width: 99%;
             text-align: left;
         }
-
-        table,
-        th,
-        td {
+        table, th, td {
             border: 1px solid;
             padding: 14px;
-
         }
     </style>
 
-
     <body>
+
         <%- include('../../partials/navbar.ejs') %>
 
-            <h1 class="heading">Employee</h1>
-            <table>
-                <% for(let i=0; i<employees.length;i++) {%>
-                    <tr>
+        <h1 class="heading">Employee</h1>
+        <a href="/staff/employees/add">
+            <button class="add-btn">Add New Employee</button>
+        </a>
 
-                        <th>
-                            ID: <%= employees[i].id %>
-                        </th>
-                        <th>
-                            Name: <%= employees[i].name %>
-                        </th>
-                        <th>
-                            Email: <%= employees[i].email %>
-                        </th>
-                        <th>
-                            Phone: <%= employees[i].phone %>
-                        </th>
+        <table>
 
-                        <th>
-                            <div class="actions"> 
-                                Actions: 
-                                <a href="/staff/food-items/<%= employees[i].id %>/edit">
-                                    <button class="edit-btn">Edit Items</button>
-                                </a>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
 
-                                <a href="/staff/food-items/<%= employees[i].id %>/delete">
-                                    <button class="delete-btn">Delete Items</button>
-                                </a>
-                            </div>
-                        </th>
+            <% for( let i = 0; i < employees.length; i++ ) { %>
 
-                    </tr>
-                    <% } %>
+                <tr>
+                    <td><%= employees[i].id %></td>
+                    <td><%= employees[i].name %></td>
+                    <td><%= employees[i].email %></td>
+                    <td><%= employees[i].phone %></td>
+                    <td><%= employees[i].isAdmin ? "Admin" : "Employee" %></td>
+                    <td>
+                        <a href="/staff/employees/<%= employees[i].id %>/edit">
+                            <button class="edit-btn">Edit</button>
+                        </a>
+                        <a href="/staff/employees/<%= employees[i].id %>/delete">
+                            <button class="delete-btn">Delete</button>
+                        </a>
+                    </td>
+                </tr>
 
-                    <tr>
-                        <td>001</td>
-                        <td>Yang Yang</td>
-                        <td>yangyang@gmail.com</td>
-                        <td>0123456789</td>
-                        <td>
-                            <button>Edit</button>
-                            <button>Delete</button>
-                        </td>
-                    </tr>
+            <% } %>
 
-            </table>
-
+        </table>
 
     </body>
+
+</html>
