@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/', async (req, res) => {
 
     const employees = await Employee.findAll();
-    res.render('staff/employees', { employees });
+    res.render('staff/employees/view', { employees });
 });
 
 router.get('/add', async (req, res) => {

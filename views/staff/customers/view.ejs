@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("../../partials/head.ejs") %>
+
+    <style>
+        table {
+            width: 100%;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid;
+            padding: 14px;
+
+        }
+    </style>
+
+    <body>
+        <%- include('../../partials/navbar.ejs') %>
+
+        <h1 class="heading">Customer</h1>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Role</th>
+                <th>Department</th>
+                <th>Actions</th>
+            </tr>
+
+            <tr>
+                <td>001</td>
+                <td>Yang Yang</td>
+                <td>yangyang@gmail.com</td>
+                <td>0123456789</td>
+                <td>Student</td>
+                <td>FCA</td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>002</td>
+                <td>Ji Chang Wook</td>
+                <td>jichang@gmail.com</td>
+                <td>1425367890</td>
+                <td>Student</td>
+                <td>CS</td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+            </tr>
+
+        </table>
+
+    </body>

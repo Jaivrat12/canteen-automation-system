@@ -1,0 +1,31 @@
+.heading {
+    text-align: center;
+}
+
+.food-img {
+    margin-right: 12px;
+    height: 100%;
+    
+}
+
+.food-name {
+    font-weight: bold;
+}
+
+.menu {
+    padding: 4px;
+}
+
+.item {
+    margin-bottom: 4px;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    border-radius: 8px;
+    border: 1px solid;
+}
+
+
+

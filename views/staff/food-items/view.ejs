@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("../../partials/head.ejs") %>
+
+    <body>
+
+        <%- include('../../partials/navbar.ejs') %>
+
+            <h1 class="heading">Food Item</h1>
+            <a href="/staff/food-items/add">
+                <button class="add-btn">Add Items</button>
+            </a>
+
+            <div class="menu">
+
+                <% for(let i=0;i<items.length;i++) {%>
+
+                    <div class="item">
+                        <img src="<%= items[i].image ?? " /pizza.jpg" %>" alt="" class="food-img">
+                        <div class="food-info">
+                            <div class="food-name">
+                                <%=items[i].name %>
+                            </div>
+                            <div class="food-price">
+                                Rs <%=items[i].price %>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <a href="/staff/food-items/<%= items[i].id %>/edit">
+                                <button class="edit-btn">Edit Items</button>
+                            </a>
+
+                            <a href="/staff/food-items/<%= items[i].id %>/delete">
+                                <button class="delete-btn">Delete Items</button>
+                            </a>
+                        </div>
+                    </div>
+
+                    <% } %>
+
+            </div>
+
+    </body>
+
+</html>
