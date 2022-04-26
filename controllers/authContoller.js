@@ -39,7 +39,12 @@ async function logoutGet(req, res) {
 
     if (req.session.loggedIn) {
 
-        const redirect = req.session.userType === 'staff' ? '/staff' : '';
+        let redirect = '/staff';
+        if (req.session.userType !== 'staff') {
+
+            redirect = '';
+            res.cookie('cart', '', { maxAge: 1 });
+        }
         req.session.destroy(() => {
             res.redirect(redirect + '/login');
         });
