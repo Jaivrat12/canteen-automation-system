@@ -7,34 +7,35 @@
 
         <%- include('../partials/appbar.ejs') %>
 
-            <h1 class="heading">Menu</h1>
+        <h1 class="heading">Menu</h1>
 
-            <div class="menu">
+        <div class="menu">
 
-                <% for(let i=0;i<items.length;i++) {%>
+            <% for(let i=0;i<items.length;i++) {%>
 
-                    <div class="item">
-                        <img src="<%= items[i].image ?? "/pizza.jpg" %>" alt="" class="food-img">
-                        <div class="food-info">
-                            <div class="food-name">
-                                <%=items[i].name %>
-                            </div>
-                            <div class="food-price">
-                                Rs <%=items[i].price %>
-                            </div>
+                <div class="item">
+                    <img src="<%= items[i].image ?? "/pizza.jpg" %>" alt="" class="food-img">
+                    <div class="food-info">
+                        <div class="bold">
+                            <%=items[i].name %>
                         </div>
-                        <div class="qty-input">
-                            <button op="-" class="decrement">-</button>
-                            <div class="qty-val" item-id="<%= items[i].id %>">
-                                <%= items[i].quantity ?? 0 %>
-                            </div>
-                            <button op="+" class="increment">+</button>
+                        <div class="food-price">
+                            Rs <%=items[i].price %>
                         </div>
                     </div>
+                    <div class="qty-input">
+                        <button op="-" class="decrement">-</button>
+                        <div class="qty-val" item-id="<%= items[i].id %>">
+                            <%= items[i].quantity ?? 0 %>
+                        </div>
+                        <button op="+" class="increment">+</button>
+                    </div>
+                </div>
 
-                <% } %>
-            </div>
-    
+            <% } %>
+
+        </div>
+
     </body>
 
 </html>

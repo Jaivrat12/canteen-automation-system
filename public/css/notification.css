@@ -1,7 +1,3 @@
-.heading {
-    margin: 1rem 0 2rem;
-}
-
 .notif-wrapper {
     padding: 0 1rem;
 }
@@ -10,4 +6,8 @@
     margin-bottom: 1.5rem;
     color: #000;
     border-bottom: 1px solid #3333;
+}
+
+.notif-title {
+    color: #0d6efd;
 }

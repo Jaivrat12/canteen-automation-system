@@ -1,0 +1,76 @@
+.orders, .order {
+    margin: 0 auto;
+    padding: 0 1rem;
+    max-width: 1024px;
+}
+
+.orders .order {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    border: 1px solid #3333;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.order-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.orders .order .order-row {
+    margin-bottom: 0.5rem;
+}
+
+.order .status {
+    color: #f09c00;
+    text-transform: capitalize;
+}
+
+.status.red {
+    color: #ff4500;
+}
+
+.status.green {
+    color: #00b45a;
+}
+
+.orders .order .items {
+    max-width: 50%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.item {
+    height: 50px;
+}
+
+.food-img {
+    width: 50px;
+}
+
+.order.history .total-price {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+}
+
+.details-btn {
+    display: block;
+    text-align: right;
+    font-weight: 500;
+}
+
+.status-form select, .status-form input[type="submit"] {
+    padding: 0.3125rem 0.5rem;
+    border: 2px solid #6400ac;
+    border-radius: 1rem;
+    background-color: #6400ac10;
+    color: #6400ac;
+}
+
+.status-form input[type="submit"] {
+    border-color: #0077e7;
+    background-color: #0077e7;
+    color: #fff;
+}

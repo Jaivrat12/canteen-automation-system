@@ -1,61 +1,49 @@
 <!DOCTYPE html>
 <html>
 
-<%- include("../../partials/head.ejs") %>
+    <%- include("../../partials/head.ejs") %>
 
     <body>
+
         <%- include('../../partials/navbar.ejs') %>
 
-            <h1 class="heading">Update Customer</h1>
+        <form action="/staff/customers/<%= customer.id %>/edit" method="post" class="form">
 
-            <div class="container">
-                <form action="/staff/customers/<%= customer.id %>/edit" method="post" class="update-customer">
+            <h1 class="heading">EDIT CUSTOMER</h1>
 
-                    <div class="form-input">
-                        <label for="name">Name:</label>
-                        <input type="text" name="name" value="<%= customer.name %>" required>
-                    </div>
-
-                    <br>
-
-                    <div class="form-input">
-                        <label for="email">Email:</label>
-                        <input type="email" name="email" value="<%= customer.email %>" required>
-                    </div>
-
-                    <br>
-
-                    <div class="form-input">
-                        <label for="password">Password:</label>
-                        <input type="password" name="password" value="<%= customer.password %>" required>
-                    </div>
-
-                    <br>
-
-                    <div class="form-input">
-                        <label for="phone">Phone:</label>
-                        <input type="text" name="phone" value="<%= customer.phone %>" minlength="10" maxlength="10" required>
-                    </div>
-
-                    <br>
-
-                    <div class="form-input">
-                        <label for="role">Role:</label>
-                        <input type="text" name="role" value="<%= customer.role %>" required>
-                    </div>
-
-                    <br>
-
-                    <div class="form-input">
-                        <label for="department">Department:</label>
-                        <input type="text" name="department" value="<%= customer.department %>" required>
-                    </div>
-
-                    <br>
-
-                    <input type="submit" value="Submit">
-                </form>
+            <div class="form-input">
+                <label for="name">NAME</label>
+                <input type="text" name="name" value="<%= customer.name %>" required>
             </div>
+
+            <div class="form-input">
+                <label for="email">EMAIL</label>
+                <input type="email" name="email" value="<%= customer.email %>" required>
+            </div>
+
+            <div class="form-input">
+                <label for="password">PASSWORD</label>
+                <input type="password" name="password" value="<%= customer.password %>" required>
+            </div>
+
+            <div class="form-input">
+                <label for="phone">PHONE</label>
+                <input type="text" name="phone" value="<%= customer.phone %>" minlength="10" maxlength="10" required>
+            </div>
+
+            <div class="form-input">
+                <label for="role">ROLE</label>
+                <input type="text" name="role" value="<%= customer.role %>" required>
+            </div>
+
+            <div class="form-input">
+                <label for="department">DEPARTMENT</label>
+                <input type="text" name="department" value="<%= customer.department %>" required>
+            </div>
+
+            <input type="submit" class="btn form-submit" value="SAVE">
+
+        </form>
 
     </body>
 

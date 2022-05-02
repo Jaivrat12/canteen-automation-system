@@ -1,49 +1,41 @@
 <!DOCTYPE html>
 <html>
 
-<%- include("../../partials/head.ejs") %>
+    <%- include("../../partials/head.ejs") %>
 
     <body>
+
         <%- include('../../partials/navbar.ejs') %>
 
-            <h1 class="heading">Update Food-Item</h1>
+        <form action="/staff/food-items/<%= item.id %>/edit" method="post" class="form" encType="multipart/form-data">
 
-            <div class="container">
-                <form action="/staff/food-items/<%= item.id %>/edit" method="post" class="update-item" encType="multipart/form-data">
-                    <div class="form-input">
-                        <label for="name">Name:</label>
-                        <input type="text" name="name" value="<%= item.name %>" required>
-                    </div>
+            <h1 class="heading">EDIT FOOD ITEM</h1>
 
-                    <br>
-
-                    <div class="form-input">
-                        <label for="price">Price:</label>
-                        <input type="number" step="any" name="price" value="<%= item.price %>" min="0" max="1000" required>
-                    </div>
-
-                    <br>
-
-                    <div class="form-input">
-                        <label for="image">Image:</label>
-                        <input type="file" name="image">
-
-                    </div>
-
-                    <br>
-
-                    <div class="form-input">
-                        <input type="checkbox" id="isAvailable" name="isAvailable"
-                            <%= item.isAvailable ? "checked" : "" %>
-                        >
-                        <label for="isAvailable">Is Available</label>
-                    </div>
-
-                    <br>
-
-                    <input type="submit" value="Submit">
-                </form>
+            <div class="form-input">
+                <label for="name">NAME</label>
+                <input type="text" name="name" value="<%= item.name %>" required>
             </div>
+
+            <div class="form-input">
+                <label for="price">PRICE</label>
+                <input type="number" step="any" name="price" value="<%= item.price %>" min="0" max="1000" required>
+            </div>
+
+            <div class="form-input">
+                <label for="image">IMAGE</label>
+                <input type="file" id="file" name="image">
+            </div>
+
+            <div class="form-input checkbox">
+                <input type="checkbox" id="isAvailable" name="isAvailable"
+                    <%= item.isAvailable ? "checked" : "" %>
+                >
+                <label for="isAvailable">Is Available</label>
+            </div>
+
+            <input type="submit" class="btn form-submit" value="SAVE">
+
+        </form>
 
     </body>
 

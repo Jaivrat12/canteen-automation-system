@@ -5,6 +5,15 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+}
+
+body {
+    /* font-family: sans-serif; */
+    background: #6f00ff10;
+}
+
 a {
     text-decoration: none;
 }
@@ -19,16 +28,19 @@ li {
 }
 
 button {
-    color: white;
     border-color: black;
 }
 
 /* MAIN STYLES */
 .appbar {
+    position: sticky;
+    top: 0;
     padding: 1rem;
     background: #ff004c;
     background: #6400ac;
+    /* background: #333; */
     color: white;
+    box-shadow: 0 2px 8px #0003;
 }
 
 .appbar a {
@@ -80,6 +92,7 @@ button {
 .navbar .nav-links li{
     padding: 12px;
 }
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -91,4 +104,45 @@ button {
 
 .navbar a {
     color: white;
+}
+
+.heading {
+    margin: 1rem 0 2rem;
+    font-size: 2.25rem;
+    text-align: center;
+}
+
+.no-content {
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+.error {
+    color: #ff224e;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.btn {
+    padding: 0.3125rem 0.5rem;
+    border: 2px solid;
+    border-radius: 1rem;
+    border-color: #6400ac;
+    background-color: #6400ac10;
+    color: #6400ac;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.blue-link, .red-link {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.blue-link {
+    color: #0077e7;
+}
+
+.red-link {
+    color: #ee2049;
 }

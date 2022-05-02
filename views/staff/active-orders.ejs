@@ -9,35 +9,43 @@
 
         <h1 class="heading">ACTIVE ORDERS</h1>
 
-        <% for( let i=0; i < orders.length; i++ ) { %>
+        <div class="orders">
 
-            <div class="order">
+            <% for( let i=0; i < orders.length; i++ ) { %>
 
-                <div class="customer-name">
-                    Placed by: <%= orders[i].customer.name %>
+                <div class="order">
+
+                    <div class="order-row bold">
+                        Placed by: <%= orders[i].customer.name %>
+                    </div>
+
+                    <div class="order-row">
+                        <div class="order-id bold">
+                            Order ID: #<%= orders[i].id %>
+                        </div>
+                        <div class="status">
+                            Status: <%= orders[i].status %>
+                        </div>
+                    </div>
+
+                    <div class="order-row">
+                        <div class="items">
+                            <%= orders[i].items %>
+                        </div>
+                        <div class="total">
+                            Total: Rs <%= orders[i].total %>
+                        </div>
+                    </div>
+
+                    <a href="active-orders/<%= orders[i].id %>" class="details-btn">
+                        VIEW DETAILS
+                    </a>
+
                 </div>
 
-                <div class="order-row">
-                    <div class="order-id">
-                        <%= orders[i].id %>
-                    </div>
-                    <div class="status">
-                        status: <%= orders[i].status %>
-                    </div>
-                </div>
+            <% } %>
 
-                <div class="order-row">
-                    <div class="items">
-                        <%= orders[i].items %>
-                    </div>
-                    <div class="total">
-                        Total: Rs <%= orders[i].total %>
-                    </div>
-                </div>
-
-            </div>
-
-        <% } %>
+        </div>
 
     </body>
 

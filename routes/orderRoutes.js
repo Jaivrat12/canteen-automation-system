@@ -48,9 +48,9 @@ function notifyClient(notification, customerId) {}
 
 router.post('/:id/update', checkUser('staff', '/staff/login'), async (req, res) => {
 
+    const id = req.params.id;
     if (req.session.userType === 'staff') {
 
-        const id = req.params.id;
         // console.log(id);
         const order = await Order.findByPk(id);
 
@@ -71,8 +71,7 @@ router.post('/:id/update', checkUser('staff', '/staff/login'), async (req, res) 
             notifyClient(notification, order.customerId);
         }
     }
-
-    res.redirect(req.url);
+    res.redirect('/staff/active-orders/' + id);
 });
 
 module.exports = router;

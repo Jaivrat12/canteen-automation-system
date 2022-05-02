@@ -3,52 +3,43 @@
 
     <%- include("../../partials/head.ejs") %>
 
-<body>
-    <%- include('../../partials/navbar.ejs') %>
+    <body>
 
-    <h1 class="heading">ADD Employee</h1>
+        <%- include('../../partials/navbar.ejs') %>
 
-    <div class="container">
-        <form action="/staff/employees/add" method="post" class="add-employee">
+        <form action="/staff/employees/add" method="post" class="form">
+
+            <h1 class="heading">ADD EMPLOYEE</h1>
+
             <div class="form-input">
-                <label for="name">Name:</label>
+                <label for="name">NAME</label>
                 <input type="text" id="name" name="name" required>
             </div>
 
-            <br>
-
             <div class="form-input">
-                <label for="email">Email:</label>
+                <label for="email">EMAIL</label>
                 <input type="email" id="email" name="email" required>
             </div>
 
-            <br>
-
             <div class="form-input">
-                <label for="password">Password:</label>
+                <label for="password">PASSWORD</label>
                 <input type="password" id="password" name="password" required>
             </div>
 
-            <br>
-
             <div class="form-input">
-                <label for="phone">Phone:</label>
+                <label for="phone">PHONE</label>
                 <input type="text" id="phone" name="phone" required>
             </div>
 
-            <br>
-
-            <div class="form-input">
+            <div class="form-input checkbox">
                 <input type="checkbox" id="isAdmin" name="isAdmin">
                 <label for="isAdmin">Has Admin Rights</label>
             </div>
 
-            <br>
+            <input type="submit" class="btn form-submit" value="ADD">
 
-            <input type="submit" value="Submit">
         </form>
-    </div>
 
-</body>
+    </body>
 
 </html>

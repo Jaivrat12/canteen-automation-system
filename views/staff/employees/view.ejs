@@ -3,59 +3,56 @@
 
     <%- include("../../partials/head.ejs") %>
 
-    <style>
-        table {
-            margin: 0 auto;
-            width: 99%;
-            text-align: left;
-        }
-        table, th, td {
-            border: 1px solid;
-            padding: 14px;
-        }
-    </style>
-
     <body>
 
         <%- include('../../partials/navbar.ejs') %>
 
-        <h1 class="heading">Employee</h1>
-        <a href="/staff/employees/add">
-            <button class="add-btn">Add New Employee</button>
-        </a>
+        <h1 class="heading">EMPLOYEES</h1>
 
-        <table>
+        <div class="data-table">
 
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Role</th>
-                <th>Actions</th>
-            </tr>
+            <div class="text-end mb-3">
+                <a href="/staff/employees/add">
+                    <button class="btn">Add New Employee</button>
+                </a>
+            </div>
 
-            <% for( let i = 0; i < employees.length; i++ ) { %>
+            <table>
 
                 <tr>
-                    <td><%= employees[i].id %></td>
-                    <td><%= employees[i].name %></td>
-                    <td><%= employees[i].email %></td>
-                    <td><%= employees[i].phone %></td>
-                    <td><%= employees[i].isAdmin ? "Admin" : "Employee" %></td>
-                    <td>
-                        <a href="/staff/employees/<%= employees[i].id %>/edit">
-                            <button class="edit-btn">Edit</button>
-                        </a>
-                        <a href="/staff/employees/<%= employees[i].id %>/delete">
-                            <button class="delete-btn">Delete</button>
-                        </a>
-                    </td>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Role</th>
+                    <th>Actions</th>
                 </tr>
 
-            <% } %>
+                <% for( let i = 0; i < employees.length; i++ ) { %>
 
-        </table>
+                    <tr>
+                        <td><%= employees[i].id %></td>
+                        <td><%= employees[i].name %></td>
+                        <td><%= employees[i].email %></td>
+                        <td><%= employees[i].phone %></td>
+                        <td><%= employees[i].isAdmin ? "Admin" : "Employee" %></td>
+                        <td>
+                            <div class="actions">
+                                <a href="/staff/employees/<%= employees[i].id %>/edit">
+                                    <span class="blue-link">EDIT</span>
+                                </a>
+                                <a href="/staff/employees/<%= employees[i].id %>/delete">
+                                    <span class="red-link">DELETE</span>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+
+                <% } %>
+
+            </table>
+
+        </div>
 
     </body>
 

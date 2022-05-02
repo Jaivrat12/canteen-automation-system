@@ -1,36 +1,59 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta charset="UTF-8">
-		<link rel="stylesheet" href="/css/login.css">
-		<title><%= isStaff ? 'Staff' : '' %> Login</title>
-	</head>
+	<%- include('./partials/head.ejs') %>
+
+	<style>
+		body {
+			display: flex;
+			align-items: center;
+		}
+		.heading {
+			margin: 0;
+			margin-bottom: 1.75rem;
+			color: #6400ac;
+			font-size: 2.75rem;
+		}
+		.error {
+			margin: -1.75rem 0 1.75rem;
+		}
+		.form {
+			padding: 4rem 2rem;
+			max-width: 400px;
+  			box-shadow: 0 5px 5px #00000026;
+		}
+		.form-input input {
+			border-color: #6400ac !important;
+		}
+		.form-submit {
+			padding: 0.5rem;
+		}
+	</style>
 
 	<body>
 
-		<div class="container">
-			<form action="<%= isStaff ? '/staff' : '' %>/login" method="POST">
-				<div class="title"><%= isStaff ? 'Staff' : '' %> Login</div>
-				<% if (error) { %>
-					<div class="error">
-						Invalid Credentials!!!
-					</div>
-				<% } %>
-				<div class="input-box underline">
-					<input name="email" type="email" placeholder="Enter Your Email" required>
-					<div class="underline"></div>
+		<form class="form" action="<%= isStaff ? '/staff' : '' %>/login" method="POST">
+
+			<div class="heading"><%= isStaff ? 'Staff' : '' %> LOGIN</div>
+			<% if (error) { %>
+				<div class="error">
+					Invalid Credentials!!!
 				</div>
-				<div class="input-box">
-					<input name="password" type="password" placeholder="Enter Your Password" required>
-					<div class="underline"></div>
-				</div>
-				<div class="input-box button">
-					<input type="submit" name="" value="Continue">
-				</div>
-			</form>
-		</div>
+			<% } %>
+
+			<div class="form-input">
+				<label for="email">EMAIL</label>
+				<input name="email" type="email" placeholder="Enter Your Email" required>
+			</div>
+
+			<div class="form-input">
+				<label for="password">PASSWORD</label>
+				<input name="password" type="password" placeholder="Enter Your Password" required>
+			</div>
+
+			<input type="submit" class="btn form-submit mt-5" value="LOGIN">
+
+		</form>
 
 	</body>
 

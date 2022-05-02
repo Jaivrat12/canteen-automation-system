@@ -32,7 +32,7 @@ router.get('/active-orders', async (req, res) => {
     });
 });
 
-router.get('/active-order/:id', async (req, res) => {
+router.get('/active-orders/:id', async (req, res) => {
 
     const id = req.params.id;
     const activeOrder = await Order.findByPk(id, {

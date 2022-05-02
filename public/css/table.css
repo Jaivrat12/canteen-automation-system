@@ -1,0 +1,26 @@
+.data-table {
+    padding: 0 0.5rem;
+}
+
+.data-table table {
+    width: 100%;
+    text-align: left;
+    background: #fff;
+}
+
+.data-table table, .data-table th, .data-table td {
+    border: 1px solid;
+    padding: 14px;
+}
+
+.data-table th {
+    background: #6400ac;
+    color: white;
+    border-color: #000;
+    font-weight: 500;
+}
+
+.data-table .actions {
+    display: flex;
+    gap: 1rem;
+}

@@ -7,34 +7,47 @@
 
         <%- include('../partials/appbar.ejs') %>
 
-        <h1 class="heading">VIEW CART</h1>
+        <h1 class="heading">YOUR CART</h1>
 
-        <form action="/cart" method="post" class="cart">
+        <% if (items.length === 0) { %>
+            <div class="no-content">Your cart is empty!!</div>
+        <% } else { %>
 
-            <% for( let i=0; i < items.length; i++ ) { %>
+            <form action="/cart" method="post" class="cart">
 
-                <div class="item">
-                    <img src="<%= items[i].image %>" alt="">
-                    <div>
-                        <%= items[i].quantity %> x <%= items[i].name %>
+                <% for( let i=0; i < items.length; i++ ) { %>
+
+                    <div class="item">
+                        <img src="<%= items[i].image %>" alt="" class="food-img" >
+                        <div class="food-info">
+                            <div>
+                                <span class="bold"><%= items[i].name %></span>
+                                x<%= items[i].quantity %>
+                            </div>
+                            <div class="food-price">
+                                Rs <%= items[i].price %>
+                            </div>
+                        </div>
+                        <div class="bold">
+                            Rs <%= items[i].price * items[i].quantity %>
+                        </div>
                     </div>
-                    <div>
-                        Rs <%= items[i].price %>
-                    </div>
+
+                <% } %>
+
+                <hr>
+
+                <div class="total-price">
+                    <span>Grand Total</span>
+                    <span>Rs <%= total %></span>
                 </div>
 
-            <% } %>
+                <input type="submit" name="confirm" value="PLACE ORDER">
+                <a href="/"><button>BACK TO MENU</button></a>
 
-            <hr>
+            </form>
 
-            <div class="total-price">
-                total Rs <%= total %>
-            </div>
-
-            <input type="submit" name="confirm" value="confirm">
-            <a href="/"><button>Go back to menu</button></a>
-
-        </form>
+        <% } %>
 
     </body>
 

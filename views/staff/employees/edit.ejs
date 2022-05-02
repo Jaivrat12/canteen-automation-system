@@ -3,52 +3,43 @@
 
     <%- include("../../partials/head.ejs") %>
 
-<body>
-    <%- include('../../partials/navbar.ejs') %>
+    <body>
 
-    <h1 class="heading">Update Employee</h1>
+        <%- include('../../partials/navbar.ejs') %>
 
-    <div class="container">
-        <form action="/staff/employees/<%= employee.id %>/edit" method="post" class="update-employee">
+        <form action="/staff/employees/<%= employee.id %>/edit" method="post" class="form">
+
+            <h1 class="heading">EDIT EMPLOYEE</h1>
+
             <div class="form-input">
-                <label for="name">Name:</label>
+                <label for="name">NAME</label>
                 <input type="text" name="name" value="<%= employee.name %>" required>
             </div>
 
-            <br>
-
             <div class="form-input">
-                <label for="email">Email:</label>
+                <label for="email">EMAIL</label>
                 <input type="text" name="email" value="<%= employee.email %>" required>
             </div>
 
-            <br>
-
             <div class="form-input">
-                <label for="password">Password:</label>
+                <label for="password">PASSWORD</label>
                 <input type="text" name="password" value="<%= employee.password %>" required>
             </div>
 
-            <br>
-
             <div class="form-input">
-                <label for="phone">Phone:</label>
+                <label for="phone">PHONE</label>
                 <input type="text" name="phone" value="<%= employee.phone %>" required>
             </div>
 
-            <br>
-
-            <div class="form-input">
-                <input type="checkbox" name="isAdmin" <%= employee.isAdmin ? "checked" : "" %> required>
+            <div class="form-input checkbox">
+                <input type="checkbox" name="isAdmin" <%= employee.isAdmin ? "checked" : "" %>>
                 <label for="isAdmin">Has Admin Rights</label>
             </div>
 
-            <br>
+            <input type="submit" class="btn form-submit" value="SAVE">
 
-            <input type="submit" value="Submit">
         </form>
-    </div>
 
-</body>
+    </body>
 
 </html>

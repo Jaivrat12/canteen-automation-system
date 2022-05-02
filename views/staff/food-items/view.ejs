@@ -1,45 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%- include("../../partials/head.ejs") %>
+    <%- include("../../partials/head.ejs") %>
 
     <body>
 
         <%- include('../../partials/navbar.ejs') %>
 
-            <h1 class="heading">Food Item</h1>
-            <a href="/staff/food-items/add">
-                <button class="add-btn">Add New Item</button>
-            </a>
+        <h1 class="heading">FOOD ITEMS</h1>
 
-            <div class="menu">
+        <div class="menu">
 
-                <% for(let i=0;i<items.length;i++) {%>
+            <div class="text-end mb-3">
+                <a href="/staff/food-items/add">
+                    <button class="btn">Add New Item</button>
+                </a>
+            </div>
 
-                    <div class="item">
-                        <img src="<%= items[i].image ?? " /pizza.jpg" %>" alt="" class="food-img">
-                        <div class="food-info">
-                            <div class="food-name">
-                                <%=items[i].name %>
-                            </div>
-                            <div class="food-price">
-                                Rs <%=items[i].price %>
-                            </div>
+            <% for(let i=0;i<items.length;i++) {%>
+
+                <div class="item">
+                    <img src="<%= items[i].image ?? " /pizza.jpg" %>" alt="" class="food-img">
+                    <div class="food-info">
+                        <div class="food-name bold">
+                            <%=items[i].name %>
                         </div>
-                        <div class="actions">
-                            <a href="/staff/food-items/<%= items[i].id %>/edit">
-                                <button class="edit-btn">Edit</button>
-                            </a>
-
-                            <a href="/staff/food-items/<%= items[i].id %>/delete">
-                                <button class="delete-btn">Delete</button>
-                            </a>
+                        <div class="food-price">
+                            Rs <%=items[i].price %>
                         </div>
                     </div>
+                    <div class="actions">
+                        <a href="/staff/food-items/<%= items[i].id %>/edit">
+                            <span class="item-edit-btn">EDIT</span>
+                        </a>
 
-                    <% } %>
+                        <a href="/staff/food-items/<%= items[i].id %>/delete">
+                            <span class="item-delete-btn">DELETE</span>
+                        </a>
+                    </div>
+                </div>
 
-            </div>
+            <% } %>
+
+        </div>
 
     </body>
 

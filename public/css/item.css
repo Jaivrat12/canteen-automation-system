@@ -1,0 +1,95 @@
+.menu {
+    margin: 0 auto;
+    padding: 0 12px;
+    max-width: 1024px;
+}
+
+.item {
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+}
+
+.food-img {
+    margin-right: 12px;
+    height: 100%;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 0.25rem;
+}
+
+.menu .item {
+    height: 98px;
+    border: 1px solid #3333;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    background: white;
+}
+
+.menu .food-img {
+    width: 80px;
+}
+
+.food-info {
+    margin-right: auto;
+}
+
+.bold {
+    font-weight: 500;
+}
+
+.food-price {
+    font-size: 0.925rem;
+    color: #666;
+}
+
+.qty-input {
+    display: flex;
+    justify-content: space-between;
+    height: 1.5rem;
+    border: 2px solid #6400a4;
+    border-radius: 0.25rem;
+    background: #6400a4;
+}
+
+.increment, .decrement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 1rem;
+    color: white;
+    background: transparent;
+    border: none;
+}
+
+.qty-val {
+    padding: 0 0.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+}
+
+.item-add-btn {
+    padding: 0.3125rem 0.5rem;
+    border: 2px solid;
+    border-radius: 1rem;
+    border-color: #6400ac;
+    background-color: #6400ac10;
+    color: #6400ac;
+}
+
+.item-edit-btn, .item-delete-btn {
+    margin-left: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.item-edit-btn {
+    color: #0077e7;
+}
+
+.item-delete-btn {
+    color: #ee2049;
+}

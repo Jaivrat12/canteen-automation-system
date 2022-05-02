@@ -1,40 +1,33 @@
 <!DOCTYPE html>
 <html>
 
-<%- include("../../partials/head.ejs") %>
+    <%- include("../../partials/head.ejs") %>
 
     <body>
         <%- include('../../partials/navbar.ejs') %>
 
-            <h1 class="heading">ADD FOOD-ITEMS</h1>
+        <form action="/staff/food-items/add" method="post" class="form" encType="multipart/form-data">
 
-            <div class="container">
-                <form action="/staff/food-items/add" method="post" class="add-item" encType="multipart/form-data">
-                    <div class="form-input">
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
+            <h1 class="heading">ADD FOOD ITEM</h1>
 
-                    <br>
-
-                    <div class="form-input">
-                        <label for="price">Price:</label>
-                        <input type="number" step="any" id="price" name="price" min="0" max="1000" required>
-                    </div>
-
-                    <br>
-
-                    <div class="form-input">
-                        <label for="image">Image:</label>
-                        <input type="file" id="file" name="image">
-
-                    </div>
-
-                    <br>
-
-                    <input type="submit" value="Submit">
-                </form>
+            <div class="form-input">
+                <label for="name">NAME</label>
+                <input type="text" id="name" name="name" required>
             </div>
+
+            <div class="form-input">
+                <label for="price">PRICE</label>
+                <input type="number" step="any" id="price" name="price" min="0" max="1000" required>
+            </div>
+
+            <div class="form-input">
+                <label for="image">IMAGE</label>
+                <input type="file" id="file" name="image">
+            </div>
+
+            <input type="submit" class="btn form-submit" value="ADD">
+
+        </form>
 
     </body>
 

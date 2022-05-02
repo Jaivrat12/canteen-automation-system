@@ -10,16 +10,18 @@
         <h1 class="heading">Notifications</h1>
 
         <div class="notif-wrapper">
+
             <% for( let i = 0; i < notifications.length; i++ ) { %>
 
                 <a href="<%= notifications[i].href %>">
                     <div class="notification">
-                        <h5><%= notifications[i].title %></h5>
+                        <h5 class="notif-title"><%= notifications[i].title %></h5>
                         <p><%= notifications[i].body %></p>
                     </div>
                 </a>
 
             <% } %>
+
         </div>
 
     </body>

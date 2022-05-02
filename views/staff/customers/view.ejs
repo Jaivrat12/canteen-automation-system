@@ -3,61 +3,58 @@
 
     <%- include("../../partials/head.ejs") %>
 
-    <style>
-        table {
-            margin: 0 auto;
-            width: 99%;
-            text-align: left;
-        }
-        table, th, td {
-            border: 1px solid;
-            padding: 14px;
-        }
-    </style>
-
     <body>
 
         <%- include('../../partials/navbar.ejs') %>
 
-        <h1 class="heading">Customer</h1>
-        <a href="/staff/customers/add">
-            <button class="add-btn">Add New Customer</button>
-        </a>
+        <h1 class="heading">CUSTOMERS</h1>
 
-        <table>
+        <div class="data-table">
 
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Role</th>
-                <th>Department</th>
-                <th>Actions</th>
-            </tr>
+            <div class="text-end mb-3">
+                <a href="/staff/customers/add">
+                    <button class="btn">Add New Customer</button>
+                </a>
+            </div>
 
-            <% for( let i = 0; i < customers.length; i++ ) { %>
+            <table>
 
                 <tr>
-                    <td><%= customers[i].id %></td>
-                    <td><%= customers[i].name %></td>
-                    <td><%= customers[i].email %></td>
-                    <td><%= customers[i].phone %></td>
-                    <td><%= customers[i].role %></td>
-                    <td><%= customers[i].department %></td>
-                    <td>
-                        <a href="/staff/customers/<%= customers[i].id %>/edit">
-                            <button class="edit-btn">Edit</button>
-                        </a>
-                        <a href="/staff/customers/<%= customers[i].id %>/delete">
-                            <button class="delete-btn">Delete</button>
-                        </a>
-                    </td>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Role</th>
+                    <th>Department</th>
+                    <th>Actions</th>
                 </tr>
 
-            <% } %>
+                <% for( let i = 0; i < customers.length; i++ ) { %>
 
-        </table>
+                    <tr>
+                        <td><%= customers[i].id %></td>
+                        <td><%= customers[i].name %></td>
+                        <td><%= customers[i].email %></td>
+                        <td><%= customers[i].phone %></td>
+                        <td><%= customers[i].role %></td>
+                        <td><%= customers[i].department %></td>
+                        <td>
+                            <div class="actions">
+                                <a href="/staff/customers/<%= customers[i].id %>/edit">
+                                    <span class="blue-link">Edit</span>
+                                </a>
+                                <a href="/staff/customers/<%= customers[i].id %>/delete">
+                                    <span class="red-link">Delete</span>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+
+                <% } %>
+
+            </table>
+
+        </div>
 
     </body>
 

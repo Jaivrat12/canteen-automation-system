@@ -9,52 +9,66 @@
 
         <h1 class="heading">ORDER HISTORY</h1>
 
-        <% for( let i=0; i < orders.length; i++ ) { %>
+        <div class="orders">
 
-            <div class="order">
+            <% for( let i=0; i < orders.length; i++ ) { %>
 
-                <div class="order-row">
-                    <div class="customer-id">
-                        Customer id: <%= orders[i].customer.id %>
-                    </div>
-                    <div class="customer-name">
-                        Placed by: <%= orders[i].customer.name%>
-                    </div>
-                </div>
+                <div class="order">
 
-                <div class="order-row">
-                    <div class="order-id">
-                        order id: <%= orders[i].id %>
-                    </div>
-                    <div class="status">
-                        status: <%= orders[i].status %>
-                    </div>
-                </div>
-
-                <% for( let j=0; j < orders[i].items.length; j++ ) { %>
-
-                    <div class="item">
-                        <div>
-                            <%= orders[i].items[j].quantity %> x <%= orders[i].items[j].name %>
+                    <div class="order-row bold">
+                        <div class="customer-id">
+                            Customer ID: <%= orders[i].customer.id %>
                         </div>
-                        <div>
-                            Rs <%= orders[i].items[j].price %>
+                        <div class="customer-name">
+                            Placed by: <%= orders[i].customer.name%>
                         </div>
                     </div>
 
-                <% } %>
+                    <div class="order-row">
+                        <div class="order-id bold">
+                            Order ID: #<%= orders[i].id %>
+                        </div>
+                        <% const color = orders[i].status === 'delivered' ? "green" : "red"; %>
+                        <div class="status bold <%= color %>">
+                            <%= orders[i].status %>
+                        </div>
+                    </div>
 
-                <hr>
+                    <% for( let j = 0; j < orders[i].items.length; j++ ) { %>
 
-                <div class="total-price">
-                    total Rs <%= orders[i].total %>
+                        <div class="item">
+                            <img src="<%= orders[i].items[j].image %>" alt="" class="food-img" >
+                            <div class="food-info">
+                                <div>
+                                    <span class="bold"><%= orders[i].items[j].name %></span>
+                                    x<%= orders[i].items[j].quantity %>
+                                </div>
+                                <div class="food-price">
+                                    Rs <%= orders[i].items[j].price %>
+                                </div>
+                            </div>
+                            <div class="bold">
+                                Rs <%= orders[i].items[j].price * orders[i].items[j].quantity %>
+                            </div>
+                        </div>
+
+                    <% } %>
+
+                    <hr>
+
+                    <div class="total-price">
+                        <span>Total Amount</span>
+                        <span>Rs <%= orders[i].total %></span>
+                    </div>
+
+                    <span class="bold">Placed At:</span>
+                    <%= orders[i].createdAt %>
+
                 </div>
 
-                placed at : <%= orders[i].createdAt %>
+            <% } %>
 
-            </div>
-
-        <% } %>
+        </div>
 
     </body>
 

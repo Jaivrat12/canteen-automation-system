@@ -1,0 +1,40 @@
+.form {
+    margin: 2rem auto;
+    padding: 2rem 4rem;
+    width: 95%;
+    max-width: 500px;
+    background: #fff;
+    border: 1px solid #3333;
+    border-radius: 0.25rem;
+}
+
+.form-input {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-input label {
+    margin-bottom: 0.25rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #666;
+}
+
+.form-input input:not([type="file"]) {
+    padding: 0.25rem;
+    border: 2px solid #666;
+    border-radius: 0.4rem;
+}
+
+.form-input.checkbox {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-submit {
+    margin: 1rem auto 0;
+    display: block;
+    width: 8rem;
+}

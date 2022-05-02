@@ -12,8 +12,8 @@
         <div class="order">
 
             <div class="order-row">
-                <div class="order-id">
-                    order id: <%= order.id %>
+                <div class="order-id bold">
+                    Order ID: #<%= order.id %>
                 </div>
                 <form action="/orders/<%= order.id %>/update" method="post" class="status-form">
                     <select name="status">
@@ -48,18 +48,25 @@
                             Delivered
                         </option>
                     </select>
-                    <input type="submit" name="update-status" value="update-status">
+                    <input type="submit" name="update-status" value="Update Status">
                 </form>
             </div>
 
             <% for( let i=0; i < order.items.length; i++ ) { %>
 
                 <div class="item">
-                    <div>
-                        <%= order.items[i].quantity %> x <%= order.items[i].name %>
+                    <img src="<%= order.items[i].image %>" alt="" class="food-img" >
+                    <div class="food-info">
+                        <div>
+                            <span class="bold"><%= order.items[i].name %></span>
+                            x<%= order.items[i].quantity %>
+                        </div>
+                        <div class="food-price">
+                            Rs <%= order.items[i].price %>
+                        </div>
                     </div>
-                    <div>
-                        Rs <%= order.items[i].price %>
+                    <div class="bold">
+                        Rs <%= order.items[i].price * order.items[i].quantity %>
                     </div>
                 </div>
 
@@ -67,20 +74,42 @@
 
             <hr>
 
-            <div class="total-price">
-                total Rs <%= order.total %>
+            <div class="total-price mb-2">
+                <span>Total Amount</span>
+                <span>Rs <%= order.total %></span>
             </div>
 
-            placed at : <%= order.createdAt %>
+            <div class="mb-4">
+                <span class="bold">Placed At:</span>
+                <%= order.createdAt %>
+            </div>
 
             <div class="customer-details">
                 <h5>Customer Details</h5>
-                <div>id: <%= order.customer.id %></div>
-                <div>name: <%= order.customer.name %></div>
-                <div>email: <%= order.customer.email %></div>
-                <div>phone no: <%= order.customer.phone%></div>
-                <div>role: <%= order.customer.role%></div>
-                <div>department: <%= order.customer.department%></div>
+                <div>
+                    <span class="bold">ID:</span>
+                    <%= order.customer.id %>
+                </div>
+                <div>
+                    <span class="bold">Name:</span>
+                    <%= order.customer.name %>
+                </div>
+                <div>
+                    <span class="bold">Email:</span>
+                    <%= order.customer.email %>
+                </div>
+                <div>
+                    <span class="bold">Phone no:</span>
+                    <%= order.customer.phone%>
+                </div>
+                <div>
+                    <span class="bold">Role:</span>
+                    <%= order.customer.role%>
+                </div>
+                <div>
+                    <span class="bold">Department:</span>
+                    <%= order.customer.department%>
+                </div>
             </div>
 
         </div>
