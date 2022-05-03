@@ -7,7 +7,7 @@ const options = {
 if (process.env.NODE_ENV === 'production') {
     options.dialectOptions = { ssl: {
         require: true,
-        rejectUnauthorized: true
+        rejectUnauthorized: false
     } };
 }
 
