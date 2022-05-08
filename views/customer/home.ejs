@@ -11,7 +11,7 @@
 
         <div class="menu">
 
-            <% for(let i=0;i<items.length;i++) {%>
+            <% for(let i=0;i<items.length;i++) { %>
 
                 <div class="item">
                     <img src="<%= items[i].image ?? "/pizza.jpg" %>" alt="" class="food-img">
@@ -23,13 +23,19 @@
                             Rs <%=items[i].price %>
                         </div>
                     </div>
-                    <div class="qty-input">
-                        <button op="-" class="decrement">-</button>
-                        <div class="qty-val" item-id="<%= items[i].id %>">
-                            <%= items[i].quantity ?? 0 %>
+                    <% if (items[i].isAvailable) { %>
+
+                        <div class="qty-input">
+                            <button op="-" class="decrement">-</button>
+                            <div class="qty-val" item-id="<%= items[i].id %>">
+                                <%= items[i].quantity ?? 0 %>
+                            </div>
+                            <button op="+" class="increment">+</button>
                         </div>
-                        <button op="+" class="increment">+</button>
-                    </div>
+
+                    <% } else { %>
+                        Unavailable
+                    <% } %>
                 </div>
 
             <% } %>
