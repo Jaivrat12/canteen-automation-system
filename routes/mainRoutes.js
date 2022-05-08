@@ -11,7 +11,9 @@ router.get('/', async (req, res) => {
         cartItemIds.push(Number(item.id));
     });
 
-    const items = await FoodItem.findAll();
+    const items = await FoodItem.findAll({
+        order: [['id', 'ASC']]
+    });
     for (let i = 0; i < items.length; i++) {
 
         const index = cartItemIds.indexOf(items[i].id);
@@ -25,7 +27,14 @@ router.get('/', async (req, res) => {
 
 router.get('/notifications', async (req, res) => {
 
-    const notifications = await Notification.findAll({ where: { customerId: req.session.userId } });
+    const notifications = await Notification.findAll({
+        where: {
+            customerId: req.session.userId
+        },
+        order: [
+            ['id', 'DESC'],
+        ]
+    });
     res.render('customer/notifications', { notifications });
 });
 
@@ -129,6 +138,9 @@ router.get('/order-history', async (req, res) => {
             customerId: req.session.userId,
             status: ['delivered', 'rejected']
         },
+        order: [
+            ['updated_at', 'DESC'],
+        ],
         include: 'food_items'
     })
 

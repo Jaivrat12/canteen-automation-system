@@ -14,6 +14,9 @@ router.get('/active-orders', async (req, res) => {
         where: {
             status: ['accepted', 'pending', 'preparing', 'completed']
         },
+        order: [
+            ['updated_at', 'DESC'],
+        ],
         include: ['customer', 'food_items']
     });
 
@@ -54,6 +57,7 @@ router.get('/order-history', async (req, res) => {
 
     const orders = await Order.findAll({
         where: { status: ['rejected', 'delivered'] },
+        order: [ ['updated_at', 'DESC'] ],
         include: ['customer', 'food_items']
     })
 
